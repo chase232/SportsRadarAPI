@@ -30,6 +30,7 @@ public class SpringJDBCConfiguration {
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
         EmbeddedDatabase db = builder.setType(EmbeddedDatabaseType.DERBY)
                 .addScript("foo.sql")
+                .addScript("widget.sql")
                 .build();
         return db;
     }

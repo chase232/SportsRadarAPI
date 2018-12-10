@@ -9,6 +9,12 @@
 		<put-attribute name="title" value="Register Transactions" />
 	</definition>
 	
+	<!-- WIDGET DEFINITIONS (FINAL PROJECT)-->
+	<definition name="widget" extends=".default">
+		<put-attribute name="body" value="/WEB-INF/views/widget/index.jsp" />
+		<put-attribute name="title" value="Final Project" />
+	</definition>
+	
 	<!-- FREEDOM DEFINITIONS -->
 	<definition name="freedom" extends=".default">
 		<put-attribute name="body" value="/WEB-INF/views/freedom/index.jsp" />
