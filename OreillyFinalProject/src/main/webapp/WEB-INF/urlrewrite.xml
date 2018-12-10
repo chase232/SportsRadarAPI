@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 2.5//EN" "http://urlrewritefilter.googlecode.com/svn/trunk/src/java/org/tuckey/web/filters/urlrewrite/dtds/urlrewrite2.5.dtd">
+
+<urlrewrite>
+	<!--  strip jsessionid -->
+	<outbound-rule encodefirst="true">
+	  <name>Strip URL Session ID's</name>
+	  <from>^(.*?)(?:\;jsessionid=[^\?#]*)?(\?[^#]*)?(#.*)?$</from>
+	  <to>$1$2$3</to>
+	</outbound-rule>
+</urlrewrite>

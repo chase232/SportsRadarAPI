@@ -1,0 +1,2 @@
+//>>built
+define("oreilly/types/store/createSyncStore",["dojo/_base/declare","dojo/_base/lang","dstore/Memory","dstore/Trackable"],function(_1,_2,_3,_4){var _5=_1([_3,_4]);return function createSyncStore(_6,_7){_6=_6||{};if(_6.data){_6=_2.mixin({},_6,{data:_2.clone(_6.data)});}var _8=_7?_1([_5,_7]):_5;return new _8(_6);};});

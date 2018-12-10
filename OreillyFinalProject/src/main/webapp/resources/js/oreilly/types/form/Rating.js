@@ -1,0 +1,2 @@
+//>>built
+define("oreilly/types/form/Rating",["dojo/_base/declare","dojo/_base/lang","dojo/dom-attr","dojox/form/Rating"],function(_1,_2,_3,_4){_1("oreilly/types/form/Rating",_4,{constructor:function(_5){_2.mixin(this,_5);},_onMouse:function(_6){if(!this.get("disabled")){this.inherited(arguments);}},onStarClick:function(_7){if(!this.get("disabled")){var _8=+_3.get(_7.target,"value");this.setAttribute("value",_8==this.value?0:_8);this._renderStars(this.value);}}});});

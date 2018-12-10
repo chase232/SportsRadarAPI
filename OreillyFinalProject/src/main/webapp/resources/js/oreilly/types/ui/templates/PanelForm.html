@@ -1,0 +1,23 @@
+<div>
+
+<div class="alert alert-danger" style="display:none;" >
+	<p style="display:none;" data-dojo-attach-point="genericErrorNode">There was an error with the form. Please verify your input.</p>
+	
+</div>
+
+<div class="alert alert-warning" style="display:none;">
+	<p style="display:none;" data-dojo-attach-point="genericWarningNode">Warning Message.</p>
+</div>
+
+<form data-dojo-attach-point='containerNode' data-dojo-attach-event='onreset:_onReset,onsubmit:_onSubmit' ${!nameAttrSetting} method="${method}" action="${action}">
+
+<!--  This is using standard Dojo/Dijit templating as it inherits from dijit/form/Form -->
+
+
+<div
+	data-dojo-attach-point="_panelGroupWidget" 
+	data-dojo-type="oreilly/types/ui/PanelGroup">
+</div>
+
+</form>
+</div>

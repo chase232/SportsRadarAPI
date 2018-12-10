@@ -1,0 +1,2 @@
+//>>built
+define("dstore/QueryMethod",[],function(){return function QueryMethod(_1){var _2=_1.type,_3=_1.normalizeArguments,_4=_1.applyQuery,_5=_1.querierFactory;return function(){var _6=Array.prototype.slice.call(arguments),_7=_3?_3.apply(this,_6):_6,_8={type:_2,arguments:_6,normalizedArguments:_7},_9=this._getQuerierFactory(_2)||_5;if(_9){_8.querier=_9.apply(this,_7);}var _a=this._createSubCollection({queryLog:this.queryLog.concat(_8)});return _4?_4.call(this,_a,_8):_a;};};});

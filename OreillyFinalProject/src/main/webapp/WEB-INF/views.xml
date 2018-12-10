@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<definition name=".carpartsDefault" template="/WEB-INF/layouts/carpartsLayout.jsp">
+		<put-attribute name="title" value="O'Reilly Springfield Auto Parts" />
+		<put-attribute name="carpartsMenu" value="/WEB-INF/template/carpartsMenu.jsp" />
+	</definition>
+	
+	<definition name=".default" template="/WEB-INF/layouts/stdLayout.jsp">
+		<put-attribute name="title" value="O'Reilly Automotive Project Template" />
+	</definition>
+
+	<definition name="error" template="/WEB-INF/error.jsp"></definition>
+	<definition name="success" template="/WEB-INF/success.jsp"></definition>
+	<definition name="donothing" template="/WEB-INF/DoNothing.jsp"></definition>
+	<definition name="403" template="/WEB-INF/403.jsp"></definition>
+	
+	<definition name="errorPage" extends=".default">
+		<put-attribute name="body" value="/WEB-INF/errorPage.jsp" />
+	</definition>
+
+	<definition name=".internLab" template="/WEB-INF/layouts/internLayout.jsp">
+		<put-attribute name="title" value="Intern Tracking Application" />
+		<put-attribute name="internDefaultMenu" value="/WEB-INF/template/internDefaultMenu.jsp" />
+	</definition>
+	
+</tiles-definitions>

@@ -1,0 +1,2 @@
+//>>built
+define("oreilly/types/dgrid/GridSearchBox",["dojo/_base/declare","dijit/form/TextBox","dijit/registry","dojo/on"],function(_1,_2,_3,on){return _1("oreilly.types.dgrid.GridSearchBox",[_2],{gridId:"",intermediateChanges:true,placeHolder:"Search",constructor:function(_4){this.inherited(arguments);dojo.mixin(this,_4);on(this,"change",function(_5){var _6=_3.byId(this.gridId);_6.set("filterString",_5?_5+"":"");});}});});

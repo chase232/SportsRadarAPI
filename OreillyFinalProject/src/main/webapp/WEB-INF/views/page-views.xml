@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<!-- TRANSACTION DEFINITIONS -->
+	<definition name="transactions" extends=".default">
+		<put-attribute name="body" value="/WEB-INF/views/transactions/index.jsp" />
+		<put-attribute name="title" value="Register Transactions" />
+	</definition>
+	
+	<!-- FREEDOM DEFINITIONS -->
+	<definition name="freedom" extends=".default">
+		<put-attribute name="body" value="/WEB-INF/views/freedom/index.jsp" />
+		<put-attribute name="title" value="FREEEEEDOMMM" />
+	</definition>
+	
+	<!--  CARPARTS DEFINITIONS -->	
+	<definition name="carpartsHome" extends=".carpartsDefault">
+		<put-attribute name="body" value="/WEB-INF/views/carparts/carpartsHome.jsp" />
+		<put-attribute name="title" value="Car Parts ORama" />
+	</definition>	
+	
+	<definition name="carparts" extends=".carpartsDefault">
+		<put-attribute name="body" value="/WEB-INF/views/carparts/index.jsp" />
+		<put-attribute name="title" value="Car Parts ORama" />
+	</definition>
+	
+	<definition name="partnumber" extends=".carpartsDefault">
+		<put-attribute name="body" value="/WEB-INF/views/carparts/partnumber.jsp" />
+		<put-attribute name="title" value="Car Parts ORama" />
+	</definition>	
+	
+	<definition name="contactus" extends=".carpartsDefault">
+		<put-attribute name="body" value="/WEB-INF/views/carparts/contactus.jsp" />
+		<put-attribute name="title" value="Car Parts ORama" />
+	</definition>	
+	
+	<definition name="emailus" extends=".carpartsDefault">
+		<put-attribute name="body" value="/WEB-INF/views/carparts/emailus.jsp" />
+		<put-attribute name="title" value="Car Parts ORama" />
+	</definition>
+	
+	<definition name="feedback" extends=".carpartsDefault">
+		<put-attribute name="body" value="/WEB-INF/views/carparts/feedback.jsp" />
+		<put-attribute name="title" value="Car Parts ORama" />
+	</definition>
+	
+	<!--  EXAMPLE DEFINITIONS -->
+	<definition name="restclient" extends=".default">
+		<put-attribute name="body" value="/WEB-INF/views/example/restclient.jsp" />
+		<put-attribute name="title" value="O'Reilly Springfield Auto Parts Example" />
+	</definition>
+	
+	<definition name="example" extends=".default">
+		<put-attribute name="body" value="/WEB-INF/views/example/example.jsp" />
+		<put-attribute name="title" value="O'Reilly Springfield Auto Parts Example" />
+	</definition>
+	
+	<definition name="ajaxTesting" extends=".default">
+		<put-attribute name="body" value="/WEB-INF/views/example/ajaxTesting.jsp" />
+		<put-attribute name="title" value="O'Reilly Springfield Auto Parts Example" />
+	</definition>
+	
+	<!--  DEFAULT PROJECT DEFINITIONS -->
+	<definition name="index" extends=".default">
+		<put-attribute name="body" value="/WEB-INF/views/index.jsp" />
+	</definition>
+	
+	<definition name="login" extends=".default">
+		<put-attribute name="body" value="/WEB-INF/views/login.jsp" />
+	</definition>
+	
+	<definition name="home" extends=".default">
+		<put-attribute name="body" value="/WEB-INF/views/home.jsp" />
+	</definition>
+	
+</tiles-definitions>

@@ -1,0 +1,2 @@
+//>>built
+define("xstyle/ext/event-delegate",[],function(){var _1,_2=!!document.addEventListener,_3=document.createElement("div");matchesSelector=_3.matchesSelector||_3.webkitMatchesSelector||_3.msMatchesSelector||_3.mozMatchesSelector;return _1={onProperty:function(_4,_5,_6){var _7;this.on(document,_4.slice(2),_6.fullSelector(),_5);},on:function(_8,_9,_a,_b){_2?_8.addEventListener(_9,_c,false):_8.attachEvent(_9,_c);function _c(_d){_a=_a||rule.fullSelector();if(matchesSelector.call(_d.target,_a)){}};}};});

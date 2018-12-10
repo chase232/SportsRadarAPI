@@ -1,0 +1,155 @@
+apply plugin: 'eclipse'
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'war'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+
+buildscript {
+    repositories { 
+    	maven { url 'https://repo.maven.apache.org/maven2/' }
+    }
+    configurations.all { resolutionStrategy.cacheDynamicVersionsFor 0, 'minutes' }
+}
+
+repositories {
+     maven { url 'https://repo.maven.apache.org/maven2/' } }
+
+configurations {
+    all*.exclude group: 'commons-logging', module: '*'
+    querydslapt { description = 'generate querydsl Q* criteria classes' }
+    all { resolutionStrategy.cacheChangingModulesFor 0, 'seconds' }
+}
+
+//Adding querydsl generated source
+sourceSets {
+    generated { java { srcDirs = ["src/generated/java"]} }
+}
+
+dependencies {
+    // Tomcat Libraries -->
+    compile fileTree(dir: 'C:/tomcat/apache-tomcat-8.0.50/lib', includes: ["*.jar"])
+    
+    // General utils -->
+    compile(group: "org.apache.commons", name: "commons-collections4", version: "4.+")
+    compile(group: "org.apache.commons", name: "commons-lang3", version: "3.+")
+    compile(group: "com.google.guava", name: "guava", version: "23.+")
+    compile(group: "com.fasterxml.jackson.core", name: "jackson-databind", version: "2.9.+")
+    compile(group: "com.fasterxml.jackson.datatype", name: "jackson-datatype-hibernate5", version: "2.9.+")
+	
+    // Spring framework -->
+    compile(group: 'org.springframework', name: 'spring-core', version: '5.0+')
+    compile(group: "org.springframework", name: "spring-context", version: "5.0+")
+    compile(group: "org.springframework", name: "spring-context-support", version: "5.0+")
+    compile(group: "org.springframework", name: "spring-webmvc", version: "5.0+")
+    compile(group: "org.hibernate", name: "hibernate-validator", version: "5.2.5.Final")
+
+    // Spring security -->
+    //compile(group: "com.oreillyauto.teamnetsecurity", name: "TeamNetSecurity", version: "3.0.+", transitive: false, changing: true)
+
+    compile(group: "org.springframework.security", name: "spring-security-web", version: "4.2.+")
+    compile(group: "org.springframework.security", name: "spring-security-config", version: "4.2.+")
+    compile(group: "org.springframework.security", name: "spring-security-taglibs", version: "4.2.+")
+    
+    // Database -->
+    compile(group: "org.hibernate", name: "hibernate-core", version: "5.2.17.Final") { 
+        exclude group: "org.javassist"
+    }
+    compile(group: "org.hibernate", name: "hibernate-ehcache", version: "5.2.17.Final"){
+        exclude group: "org.javassist"
+    }
+    // Let Hibernate transitively pull this jar in once Tomcat 7 is updated to version 58 or higher
+    compile(group: "org.javassist", name: "javassist", version: "3.18.0-GA")
+    
+    compile(group: "org.springframework.data", name: "spring-data-jpa", version: "2.0+")
+    compile(group: "org.springframework", name: "spring-tx", version: "5.0+")
+    compile(group: "org.springframework", name: "spring-orm", version: "5.0+")
+    
+    compile (group:"com.querydsl", name:"querydsl-jpa", version:"4.1.+"){
+        exclude group: "org.hibernate.javax.persistence"
+    }
+    compile(group: "javax.transaction", name: "jta", version: "1.1")
+
+    querydslapt (group:"com.querydsl", name:"querydsl-apt", version:"4.1.+")
+    
+    // View layer -->
+    compile(group: "org.apache.taglibs", name: "taglibs-standard-impl", version: "1.2.+")
+    compile(group: "org.apache.taglibs", name: "taglibs-standard-spec", version: "1.2.+")   
+    compile(group: "org.apache.taglibs", name: "taglibs-standard-jstlel", version: "1.2.+")  
+    compile (group:"org.apache.tiles", name:"tiles-jsp", version:"3.0.+")
+    compile (group:"org.apache.tiles", name:"tiles-el", version:"3.0.+")
+     
+    // Web utils -->
+    compile (group:"org.tuckey", name:"urlrewrite", version:"2.5.+")
+	
+	// https://mvnrepository.com/artifact/log4j/log4j
+	compile group: 'log4j', name: 'log4j', version: '1.2.17', changing: true
+	
+	// Apache Derby
+    compile(group: "org.apache.derby", name: "derby", version: "10.11.1.1")
+    compile group: 'org.apache.derby', name: 'derbyclient', version: '10.14.1.0'
+    compile group: 'org.apache.derby', name: 'derbytools', version: '10.14.1.0'
+    runtime group: 'org.apache.derby', name: 'derbyclient', version: '10.14.1.0'
+    runtime group: 'org.apache.derby', name: 'derbytools', version: '10.14.1.0'
+    
+    // Twilio
+    // https://mvnrepository.com/artifact/com.twilio.sdk/twilio-java-sdk
+    //compile group: 'com.twilio.sdk', name: 'twilio-java-sdk', version: '7.+'
+    //compile group: "com.twilio.sdk", name: "twilio", version: "7.17.+"
+    compile group: "com.twilio.sdk", name: "twilio", version: "7.22.2"
+	compile group: "com.sparkjava", name: "spark-core", version: "2.7.1"
+	compile group: "org.slf4j", name: "slf4j-simple", version: "1.7.21"
+
+    // https://mvnrepository.com/artifact/org.apache.commons/commons-text
+	compile group: 'org.apache.commons', name: 'commons-text', version: '1.4'
+       
+	// https://mvnrepository.com/artifact/javax.mail/mail
+	compile group: 'javax.mail', name: 'mail', version: '1.4'
+	
+	// https://mvnrepository.com/artifact/org.json/json
+	compile group: 'org.json', name: 'json', version: '20180813'
+	
+
+}
+
+//QueryDSL attempt
+task generateQueryDSL(type: JavaCompile, description: "Generates the QueryDSL query types") {
+    // input source set
+    source = sourceSets.main.java
+    
+    // add processor module to classpath
+    classpath = configurations.compile + configurations.querydslapt 
+    destinationDir = sourceSets.generated.java.srcDirs.iterator().next()
+
+    // specify javac arguments
+    options.compilerArgs = [
+        "-proc:only",
+        "-processor",
+        "com.querydsl.apt.jpa.JPAAnnotationProcessor",
+        "-s",
+        destinationDir
+    ]
+}
+
+task helloWorld() {
+	println 'hello world'
+}
+
+//query dsl
+compileJava {
+    dependsOn generateQueryDSL
+    source generateQueryDSL.destinationDir
+}
+
+compileGeneratedJava {
+    dependsOn generateQueryDSL
+    options.warnings = false
+    classpath += sourceSets.main.runtimeClasspath
+}
+
+//End QueryDSL
+clean {
+    delete sourceSets.generated.java.srcDirs
+}

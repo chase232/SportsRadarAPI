@@ -1,0 +1,2 @@
+//>>built
+define("dstore/QueryResults",["dojo/_base/lang","dojo/when"],function(_1,_2){function _3(_4,_5){return _2(this,function(_6){for(var i=0,l=_6.length;i<l;i++){_4.call(_5,_6[i],i,_6);}});};return function(_7,_8){var _9=_8&&"totalLength" in _8;if(_7.then){_7=_1.delegate(_7);var _a=_7.then(function(_b){var _c=_9?_8.totalLength:_b.totalLength||_b.length;_b.totalLength=_c;return _c;});_7.totalLength=_9?_8.totalLength:_a;_7.response=_8&&_8.response;}else{_7.totalLength=_9?_8.totalLength:_7.length;}_7.forEach=_3;return _7;};});

@@ -1,0 +1,1 @@
+Place "include" items in this folder; like menus. (As opposed to placing the menu on every JSP)

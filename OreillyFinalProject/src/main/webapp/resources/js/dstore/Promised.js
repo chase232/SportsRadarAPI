@@ -1,0 +1,2 @@
+//>>built
+define("dstore/Promised",["dojo/_base/declare","dojo/Deferred","./QueryResults","dojo/when"],function(_1,_2,_3,_4){function _5(_6,_7){return function(){var _8=new _2();try{_8.resolve(this[_6].apply(this,arguments));}catch(error){_8.reject(error);}if(_7){var _9=new _3(_8.promise);_9.totalLength=_4(_9.totalLength);return _9;}return _8.promise;};};return _1(null,{get:_5("getSync"),put:_5("putSync"),add:_5("addSync"),remove:_5("removeSync"),fetch:_5("fetchSync",true),fetchRange:_5("fetchRangeSync",true)});});

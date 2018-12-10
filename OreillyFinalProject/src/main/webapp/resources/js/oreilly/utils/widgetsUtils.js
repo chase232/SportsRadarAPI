@@ -1,0 +1,2 @@
+//>>built
+define("oreilly/utils/widgetsUtils",["dijit/registry","dojo/_base/array"],function(_1,_2){"use strict";var _3={};_3.findWidgets=function(_4){var _5=[];if(!_4){return _5;}_5=_1.findWidgets(_4);_2.forEach(_5,function(w){_5=_5.concat(_3.findWidgets(w.domNode));});return _5;};_3.convertToBoolean=function(_6){return (_6+"").toLowerCase()==="true";};return _3;});

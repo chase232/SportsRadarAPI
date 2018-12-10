@@ -1,0 +1,2 @@
+//>>built
+define("xstyle/util/create-style-sheet",[],function(){function _1(){return !document.createStyleSheet;};var _2=document.head;return function insertCss(_3){if(_1("dom-create-style-element")){_4=document.createElement("style");_4.setAttribute("type","text/css");_4.appendChild(document.createTextNode(_3));_2.insertBefore(_4,_2.firstChild);return _4;}else{var _4=document.createStyleSheet();_4.cssText=_3;return _4.owningElement;}};});

@@ -1,0 +1,2 @@
+//>>built
+define("dstore/RequestMemory",["dojo/_base/declare","./Request","./Cache"],function(_1,_2,_3){return _1([_2,_3],{postscript:function(){this.inherited(arguments);this.fetch();},isValidFetchCache:true});});

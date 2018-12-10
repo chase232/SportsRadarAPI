@@ -1,0 +1,2 @@
+//>>built
+define("xstyle/ext/generate",["../elemental","put-selector/put"],function(_1,_2){var _3=0;return {onProperty:function(_4,_5,_6){_1.addRenderer(_4,_5,_6,function(_7){var _8=_7;for(var i=0,l=_5.length;i<l;i++){var _9=_5[i];if(_9.eachProperty){_2(_8,_9.selector);_1.update(_8);}else{if(typeof _9=="string"){if(_9.charAt(0)=="="){_9=_9.slice(1);}var _a=_9.split(",");for(var j=0,cl=_a.length;j<cl;j++){var _b=_a[j].trim();if(_b){_8=_2(j==0?_8:_7,_b);_1.update(_8);}}}else{_8.appendChild(document.createTextNode(_9));}}}});}};});
