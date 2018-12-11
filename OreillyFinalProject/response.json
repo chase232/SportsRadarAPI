@@ -1,0 +1,662 @@
+{  
+   "date":"2018-12-11",
+   "league":{  
+      "id":"cd4268ee-07aa-4c4d-a435-ec44ad2c76cb",
+      "name":"NCAA MEN",
+      "alias":"NCAAM"
+   },
+   "games":[  
+      {  
+         "id":"67152396-03d6-41e4-91b1-9243559e8109",
+         "status":"scheduled",
+         "coverage":"extended_boxscore",
+         "scheduled":"2018-12-11T22:00:00+00:00",
+         "conference_game":false,
+         "venue":{  
+            "id":"cbd9a89f-577a-46b7-99e0-b2cb310533e5",
+            "name":"Reed Green Coliseum",
+            "capacity":8095,
+            "address":"112 Coliseum Drive",
+            "city":"Hattiesburg",
+            "state":"MS",
+            "zip":"39406",
+            "country":"USA"
+         },
+         "home":{  
+            "name":"Southern Miss Golden Eagles",
+            "alias":"USM",
+            "id":"6120ac5d-e0f2-4b28-9e6f-ee71596a7e88"
+         },
+         "away":{  
+            "name":"Millsaps Majors",
+            "alias":"MILL",
+            "id":"61f2371a-20f7-49cb-999d-53c4a48d7e4d"
+         }
+      },
+      {  
+         "id":"f30383b3-a7ab-40c2-ada6-640c9024827a",
+         "status":"scheduled",
+         "coverage":"extended_boxscore",
+         "scheduled":"2018-12-11T23:00:00+00:00",
+         "conference_game":false,
+         "venue":{  
+            "id":"0ecd3719-8eea-4964-a7a3-085f06eae84e",
+            "name":"Vines Center",
+            "capacity":8085,
+            "address":"1971 University Boulevard",
+            "city":"Lynchburg",
+            "state":"VA",
+            "zip":"24502",
+            "country":"USA"
+         },
+         "broadcast":{  
+            "network":"ESPN+"
+         },
+         "home":{  
+            "name":"Liberty Flames",
+            "alias":"LIB",
+            "id":"559db90c-741f-40d1-aa81-3fdd1d4889f3"
+         },
+         "away":{  
+            "name":"South Carolina State Bulldogs",
+            "alias":"SCST",
+            "id":"a44f8c85-7ab6-4a4e-b6f1-c69a4cabe1ed"
+         }
+      },
+      {  
+         "id":"0d1327ff-f249-4999-86bc-d9f22215856c",
+         "status":"scheduled",
+         "coverage":"full",
+         "scheduled":"2018-12-12T00:00:00+00:00",
+         "conference_game":false,
+         "track_on_court":true,
+         "venue":{  
+            "id":"bc28056a-d3aa-4b45-b19e-24608db3a675",
+            "name":"Palestra",
+            "capacity":8722,
+            "address":"215 S 33rd Street",
+            "city":"Philadelphia",
+            "state":"PA",
+            "zip":"19104",
+            "country":"USA"
+         },
+         "broadcast":{  
+            "network":"ESPN2",
+            "satellite":"209"
+         },
+         "home":{  
+            "name":"Pennsylvania Quakers",
+            "alias":"PENN",
+            "id":"e6c94452-1adf-4fb9-90e5-10f165c57c5a"
+         },
+         "away":{  
+            "name":"Villanova Wildcats",
+            "alias":"VILL",
+            "id":"4383eb6a-7fd8-4ff2-94c5-43c933121e88"
+         }
+      },
+      {  
+         "id":"2cf3c437-ce09-4049-98ac-fcaeefad7a98",
+         "status":"scheduled",
+         "coverage":"full",
+         "scheduled":"2018-12-12T00:00:00+00:00",
+         "conference_game":false,
+         "venue":{  
+            "id":"c76914a3-7d54-4d6e-be85-cd6ccc69da47",
+            "name":"CFE Arena",
+            "capacity":9465,
+            "address":"12777 Gemini Boulevard N",
+            "city":"Orlando",
+            "state":"FL",
+            "zip":"32816",
+            "country":"USA"
+         },
+         "broadcast":{  
+            "network":"ESPN3"
+         },
+         "home":{  
+            "name":"UCF Knights",
+            "alias":"UCF",
+            "id":"054c3e85-0552-4549-b123-7e84af6e7b6c"
+         },
+         "away":{  
+            "name":"Georgia Southern Eagles",
+            "alias":"GASO",
+            "id":"6b955b96-b736-475e-bffd-e4acf2054169"
+         }
+      },
+      {  
+         "id":"3f5b8517-c850-4810-b4fd-4a34effb5bd5",
+         "status":"scheduled",
+         "coverage":"full",
+         "scheduled":"2018-12-12T00:00:00+00:00",
+         "conference_game":false,
+         "track_on_court":true,
+         "venue":{  
+            "id":"0b2f6987-6c44-456a-b8f9-69daf8c72909",
+            "name":"Xfinity Center",
+            "capacity":17950,
+            "address":"8500 Paint Branch Drive",
+            "city":"College Park",
+            "state":"MD",
+            "zip":"20740",
+            "country":"USA"
+         },
+         "broadcast":{  
+            "network":"BTN",
+            "satellite":"610"
+         },
+         "home":{  
+            "name":"Maryland Terrapins",
+            "alias":"MD",
+            "id":"2778d005-cc14-4e58-9bf2-3fc37bffb62f"
+         },
+         "away":{  
+            "name":"Loyola (MD) Greyhounds",
+            "alias":"L-MD",
+            "id":"175d34a7-3823-4e4f-9f11-2464f55360b8"
+         }
+      },
+      {  
+         "id":"4babeff6-ddd7-46e0-8d87-cab6955bcf18",
+         "status":"scheduled",
+         "coverage":"extended_boxscore",
+         "scheduled":"2018-12-12T00:00:00+00:00",
+         "conference_game":false,
+         "venue":{  
+            "id":"2ce2b66d-51a1-48f7-8dd5-a0ba0c9c95a7",
+            "name":"Generoso Pope Athletic Complex",
+            "capacity":1200,
+            "address":"180 Remsen Street",
+            "city":"Brooklyn",
+            "state":"NY",
+            "zip":"11201",
+            "country":"USA"
+         },
+         "broadcast":{  
+            "network":"NEC Front Row"
+         },
+         "home":{  
+            "name":"St. Francis (BKN) Terriers",
+            "alias":"SFNY",
+            "id":"e19cfc47-f23f-4c64-ba29-2e6d12dc45b2"
+         },
+         "away":{  
+            "name":"Massachusetts-Lowell River Hawks",
+            "alias":"MASSL",
+            "id":"4927ef8b-e680-4fb8-b10e-2ea3eff32eab"
+         }
+      },
+      {  
+         "id":"56041a2f-ef8a-4d17-818c-b85cbb037506",
+         "status":"scheduled",
+         "coverage":"extended_boxscore",
+         "scheduled":"2018-12-12T00:00:00+00:00",
+         "conference_game":false,
+         "venue":{  
+            "id":"1a6fd393-b2fb-4210-8082-83e5bbc9d681",
+            "name":"John J. Lee Amphitheater",
+            "capacity":2532,
+            "address":"70 Tower Parkway",
+            "city":"New Haven",
+            "state":"CT",
+            "zip":"6511",
+            "country":"USA"
+         },
+         "broadcast":{  
+            "network":"ESPN+"
+         },
+         "home":{  
+            "name":"Yale Bulldogs",
+            "alias":"YALE",
+            "id":"ca478771-aa3d-4231-81e0-b70f519134fb"
+         },
+         "away":{  
+            "name":"Albany Great Danes",
+            "alias":"ALBY",
+            "id":"290a5130-836d-45e6-824f-28704d6ba246"
+         }
+      },
+      {  
+         "id":"ae124b35-0ceb-4d0f-a0a7-7827b3b4d94e",
+         "status":"scheduled",
+         "coverage":"full",
+         "scheduled":"2018-12-12T00:00:00+00:00",
+         "conference_game":false,
+         "track_on_court":true,
+         "venue":{  
+            "id":"d8e571a8-3eac-41a7-bbc3-bdf08c40d156",
+            "name":"Timmons Arena",
+            "capacity":4000,
+            "address":"3300 Poinsett Highway",
+            "city":"Greenville",
+            "state":"SC",
+            "zip":"29613",
+            "country":"USA"
+         },
+         "broadcast":{  
+            "network":"ESPN3"
+         },
+         "home":{  
+            "name":"Furman Paladins",
+            "alias":"FUR",
+            "id":"ca5318f2-48eb-4f6b-896a-966b900aa42f"
+         },
+         "away":{  
+            "name":"Charleston Southern Buccaneers",
+            "alias":"CHSO",
+            "id":"a3fef707-e4fc-48a0-82f1-f4ef01b76f45"
+         }
+      },
+      {  
+         "id":"c2e58ae1-a63e-441f-807a-4def254fd718",
+         "status":"scheduled",
+         "coverage":"extended_boxscore",
+         "scheduled":"2018-12-12T00:00:00+00:00",
+         "conference_game":false,
+         "venue":{  
+            "id":"bed1559a-3619-4ee3-bafe-c8021620a500",
+            "name":"Retriever Activities Center",
+            "capacity":4024,
+            "address":"1000 Hilltop Circle",
+            "city":"Baltimore",
+            "state":"MD",
+            "zip":"21250",
+            "country":"USA"
+         },
+         "broadcast":{  
+            "network":"ESPN+"
+         },
+         "home":{  
+            "name":"UMBC Retrievers",
+            "alias":"UMBC",
+            "id":"32755362-6336-4dd3-ac34-6f72a6cc150b"
+         },
+         "away":{  
+            "name":"Towson Tigers",
+            "alias":"TOWS",
+            "id":"6f3eec09-2918-4739-a0e8-5d79e14a8332"
+         }
+      },
+      {  
+         "id":"47f3ee9a-33b4-4320-b1b5-d039f4d92701",
+         "status":"scheduled",
+         "coverage":"extended_boxscore",
+         "scheduled":"2018-12-12T00:30:00+00:00",
+         "conference_game":false,
+         "venue":{  
+            "id":"b30181e3-c980-4668-9c13-5f5ef88aa819",
+            "name":"Jack Stephens Center",
+            "capacity":5600,
+            "address":"2801 South University",
+            "city":"Little Rock",
+            "state":"AR",
+            "zip":"72204",
+            "country":"USA"
+         },
+         "home":{  
+            "name":"Arkansas-Little Rock Trojans",
+            "alias":"UALR",
+            "id":"0dadedb0-2bd3-45e7-91a3-93af6c4e87f2"
+         },
+         "away":{  
+            "name":"Miles Golden Bears",
+            "alias":"MILES",
+            "id":"c41baefa-6cc5-4d8e-98b2-75b7d68e0283"
+         }
+      },
+      {  
+         "id":"91f43074-efda-4799-819a-f24e4ed7da26",
+         "status":"scheduled",
+         "coverage":"extended_boxscore",
+         "scheduled":"2018-12-12T00:30:00+00:00",
+         "conference_game":false,
+         "venue":{  
+            "id":"1ab1ee39-1e10-410b-b7fd-2f93c1d86216",
+            "name":"Thomas Assembly Center",
+            "capacity":8000,
+            "address":"1650 West Alabama Avenue",
+            "city":"Ruston",
+            "state":"LA",
+            "zip":"71272",
+            "country":"USA"
+         },
+         "home":{  
+            "name":"Louisiana Tech Bulldogs",
+            "alias":"LT",
+            "id":"8ff733a9-9f93-46de-ba7e-cf6f7e429670"
+         },
+         "away":{  
+            "name":"Mississippi Valley State Delta Devils",
+            "alias":"MVSU",
+            "id":"5873529e-e5e3-4a06-8a03-fa4cbe509880"
+         }
+      },
+      {  
+         "id":"13ccfae2-ede6-489d-ac3e-8b01aa8455e5",
+         "status":"scheduled",
+         "coverage":"extended_boxscore",
+         "scheduled":"2018-12-12T01:00:00+00:00",
+         "conference_game":false,
+         "venue":{  
+            "id":"704c2bf5-b61f-44c9-abee-71e6d0cae512",
+            "name":"Cajundome",
+            "capacity":11550,
+            "address":"444 Cajundome Boulevard",
+            "city":"Lafayette",
+            "state":"LA",
+            "zip":"70506",
+            "country":"USA"
+         },
+         "broadcast":{  
+            "network":"ESPN+"
+         },
+         "home":{  
+            "name":"Louisiana-Lafayette Ragin' Cajuns",
+            "alias":"ULL",
+            "id":"63cad858-8654-4956-8438-8fe79cd1208a"
+         },
+         "away":{  
+            "name":"Prairie View A&M Panthers",
+            "alias":"PV",
+            "id":"91ec9ba2-12e5-4a75-9410-a166c82163fd"
+         }
+      },
+      {  
+         "id":"27f6d58e-c655-47a8-a6a0-d0f0d130a0d5",
+         "status":"scheduled",
+         "coverage":"full",
+         "scheduled":"2018-12-12T01:00:00+00:00",
+         "conference_game":false,
+         "venue":{  
+            "id":"55b2714f-a468-4f6e-94b3-c3461597d69d",
+            "name":"Rose Hill Gymnasium",
+            "capacity":3200,
+            "address":"465 E Fordham Rd",
+            "city":"Bronx",
+            "state":"NY",
+            "zip":"10458",
+            "country":"USA"
+         },
+         "broadcast":{  
+            "network":"ESPN+"
+         },
+         "home":{  
+            "name":"Fordham Rams",
+            "alias":"FOR",
+            "id":"7888d144-563d-4f84-b99b-d120aecf1fef"
+         },
+         "away":{  
+            "name":"N.J.I.T. Highlanders",
+            "alias":"NJIT",
+            "id":"500d7223-ecff-494b-9539-28427156c783"
+         }
+      },
+      {  
+         "id":"37c47077-fd1a-4db7-a585-3d1528b66849",
+         "status":"scheduled",
+         "coverage":"extended_boxscore",
+         "scheduled":"2018-12-12T01:00:00+00:00",
+         "conference_game":false,
+         "venue":{  
+            "id":"5f3d2fe1-06a6-453a-a4cb-78b00809cb38",
+            "name":"Fant-Ewing Coliseum",
+            "capacity":7085,
+            "address":"4099 Northeast Drive",
+            "city":"Monroe",
+            "state":"LA",
+            "zip":"71203",
+            "country":"USA"
+         },
+         "home":{  
+            "name":"Louisiana-Monroe Warhawks",
+            "alias":"ULM",
+            "id":"18585f21-1d63-4400-974c-433fd5073c34"
+         },
+         "away":{  
+            "name":"Grambling State Tigers",
+            "alias":"GRAM",
+            "id":"6776c7e6-f4c2-47bd-99e5-39fc179a3197"
+         }
+      },
+      {  
+         "id":"8192d7dc-b028-460a-945b-c21014108a2e",
+         "status":"scheduled",
+         "coverage":"extended_boxscore",
+         "scheduled":"2018-12-12T01:00:00+00:00",
+         "conference_game":false,
+         "venue":{  
+            "id":"e5485a6b-50d0-40ab-a0ee-560016270c8b",
+            "name":"Resch Center",
+            "capacity":9729,
+            "address":"1901 S Oneida Street",
+            "city":"Green Bay",
+            "state":"WI",
+            "zip":"54304",
+            "country":"USA"
+         },
+         "broadcast":{  
+            "network":"ESPN3"
+         },
+         "home":{  
+            "name":"Green Bay Phoenix",
+            "alias":"GB",
+            "id":"61a3e5ab-1be3-4694-b83f-edae0953f409"
+         },
+         "away":{  
+            "name":"UW-Stout Blue Devils",
+            "alias":"UWS",
+            "id":"9720b573-4eca-480b-975f-997a53466438"
+         }
+      },
+      {  
+         "id":"e19041e6-9189-48c7-ace7-78ffa702c9b7",
+         "status":"scheduled",
+         "coverage":"extended_boxscore",
+         "scheduled":"2018-12-12T01:00:00+00:00",
+         "conference_game":false,
+         "venue":{  
+            "id":"982c554c-7900-48f0-b75d-a4888280ac16",
+            "name":"Frost Arena",
+            "capacity":6500,
+            "address":"11th Street & 16th Avenue",
+            "city":"Brookings",
+            "state":"SD",
+            "zip":"57006",
+            "country":"USA"
+         },
+         "broadcast":{  
+            "network":"ESPN+"
+         },
+         "home":{  
+            "name":"South Dakota State Jackrabbits",
+            "alias":"SDST",
+            "id":"6ef40534-5fad-4755-84de-7dcbd645d1f0"
+         },
+         "away":{  
+            "name":"Savannah State Tigers",
+            "alias":"SAV",
+            "id":"3eacc387-0ad8-4c5e-a666-c8ab447d224f"
+         }
+      },
+      {  
+         "id":"fec5be3d-2ce8-461e-b486-22f7345c973b",
+         "status":"scheduled",
+         "coverage":"extended_boxscore",
+         "scheduled":"2018-12-12T01:00:00+00:00",
+         "conference_game":false,
+         "venue":{  
+            "id":"e28afaa2-23e8-4139-bebd-51f01828b4cb",
+            "name":"Williams Assembly Center",
+            "capacity":8000,
+            "address":"1400 J.R. Lynch Street",
+            "city":"Jackson",
+            "state":"MS",
+            "zip":"39217",
+            "country":"USA"
+         },
+         "home":{  
+            "name":"Jackson State Tigers",
+            "alias":"JKST",
+            "id":"c444e03b-d16b-48b2-9b18-823c2647d41d"
+         },
+         "away":{  
+            "name":"Fisk Bulldogs",
+            "alias":"FISK",
+            "id":"9fdeb490-e8e5-4fe7-8011-0d00e8784b1c"
+         }
+      },
+      {  
+         "id":"078a746e-651c-4e9a-befd-7958c98fd055",
+         "status":"scheduled",
+         "coverage":"full",
+         "scheduled":"2018-12-12T02:00:00+00:00",
+         "conference_game":false,
+         "venue":{  
+            "id":"f72da915-1ddd-41a0-9e19-0b0c7f6f30c5",
+            "name":"Williams Arena",
+            "capacity":14625,
+            "address":"1925 SE University Avenue",
+            "city":"Minneapolis",
+            "state":"MN",
+            "zip":"55455",
+            "country":"USA"
+         },
+         "broadcast":{  
+            "network":"BTN",
+            "satellite":"610"
+         },
+         "home":{  
+            "name":"Minnesota Golden Gophers",
+            "alias":"MINN",
+            "id":"fa416692-7e09-4f0a-9bcf-0cf7d5149a14"
+         },
+         "away":{  
+            "name":"North Florida Ospreys",
+            "alias":"UNF",
+            "id":"09920a5f-1b25-466c-b5ae-6167214f5ba9"
+         }
+      },
+      {  
+         "id":"69d5a267-16d0-4f0c-bc54-b573f5f6726f",
+         "status":"scheduled",
+         "coverage":"extended_boxscore",
+         "scheduled":"2018-12-12T02:00:00+00:00",
+         "conference_game":false,
+         "venue":{  
+            "id":"410dd52e-6fd0-4da9-89a6-c9e434a35fe7",
+            "name":"Bank of Colorado Arena at Butler-Hancock Athletic Center",
+            "capacity":2734,
+            "address":"270 Alles Drive",
+            "city":"Greeley",
+            "state":"CO",
+            "zip":"80631",
+            "country":"USA"
+         },
+         "broadcast":{  
+            "network":"Pluto TV"
+         },
+         "home":{  
+            "name":"Northern Colorado Bears",
+            "alias":"UNCO",
+            "id":"7e42fa84-68cd-47a6-b49a-18b5414d8084"
+         },
+         "away":{  
+            "name":"Johnson & Wales (CO) Wildcats",
+            "alias":"JWCO",
+            "id":"03cdc968-4a7f-4230-9c28-f84fca60af2a"
+         }
+      },
+      {  
+         "id":"719f1278-318f-42a7-891a-8928c3a53f66",
+         "status":"scheduled",
+         "coverage":"full",
+         "scheduled":"2018-12-12T02:00:00+00:00",
+         "conference_game":false,
+         "venue":{  
+            "id":"32e70ac7-27f7-4a28-92a4-8584180cf3ca",
+            "name":"Arena-Auditorium",
+            "capacity":15028,
+            "address":"1000 E University Avenue",
+            "city":"Laramie",
+            "state":"WY",
+            "zip":"82071",
+            "country":"USA"
+         },
+         "broadcast":{  
+            "network":"MW Network"
+         },
+         "home":{  
+            "name":"Wyoming Cowboys",
+            "alias":"WYO",
+            "id":"a7127c0a-a466-47ae-91ad-9a71ee2c9427"
+         },
+         "away":{  
+            "name":"Denver Pioneers",
+            "alias":"DEN",
+            "id":"6f676cba-c1f9-45a4-9016-fb408fd525b1"
+         }
+      },
+      {  
+         "id":"7386edf0-39dd-47fd-a0c2-91102f689f7e",
+         "status":"scheduled",
+         "coverage":"full",
+         "scheduled":"2018-12-12T02:00:00+00:00",
+         "conference_game":false,
+         "venue":{  
+            "id":"7b2ab214-8e42-4736-b16c-1c91df7b509f",
+            "name":"Dreamstyle Arena",
+            "capacity":15411,
+            "address":"Avenida Cesar Chavez & University Boulevard SE",
+            "city":"Albuquerque",
+            "state":"NM",
+            "zip":"87106",
+            "country":"USA"
+         },
+         "broadcast":{  
+            "network":"ESPN2",
+            "satellite":"209"
+         },
+         "home":{  
+            "name":"New Mexico Lobos",
+            "alias":"UNM",
+            "id":"1b1977ec-b32f-4ce3-95a4-d07bab4816cd"
+         },
+         "away":{  
+            "name":"Colorado Buffaloes",
+            "alias":"COLO",
+            "id":"9fccbf28-2858-4263-821c-fdefb3c7efa3"
+         }
+      },
+      {  
+         "id":"cfbc828a-47dc-4645-96fd-6243ddaafc04",
+         "status":"scheduled",
+         "coverage":"extended_boxscore",
+         "scheduled":"2018-12-12T03:05:00+00:00",
+         "conference_game":false,
+         "venue":{  
+            "id":"38a364ae-eb4c-4ace-a2e4-c28f3b1b11f5",
+            "name":"The Nest",
+            "capacity":1012,
+            "address":"6000 J Street",
+            "city":"Sacramento",
+            "state":"CA",
+            "zip":"95819",
+            "country":"USA"
+         },
+         "broadcast":{  
+            "network":"Pluto TV"
+         },
+         "home":{  
+            "name":"Sacramento State Hornets",
+            "alias":"SAC",
+            "id":"1dc13b18-f9b3-4bb9-b1cf-979fcd8c2b6f"
+         },
+         "away":{  
+            "name":"Holy Names Hawks",
+            "alias":"HNU",
+            "id":"0204a5e6-1228-4ce6-bf3b-3169b46245c0"
+         }
+      }
+   ]
+}
