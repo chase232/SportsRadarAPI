@@ -40,7 +40,11 @@ public class Schedule {
     public void setGame(Game[] games) {
         this.games = games;
     }
-    
-    
-    
+
+    public Schedule[] getSchedule() {
+        //Schedule[] myArray = {getDate(), getLeague(), getGame()};
+        Schedule[] myArray = {};
+        return myArray;
+    }
+
 }

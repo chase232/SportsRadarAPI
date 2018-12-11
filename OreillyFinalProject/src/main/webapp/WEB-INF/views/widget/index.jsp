@@ -6,10 +6,10 @@
 	<div>
 		<b>Service URI: </b>${request}
 	</div>
-<%-- 	<div>
+ 	<div>
 		<b>Service: </b>
 		<div>${response }</div>
-	</div> --%>
+	</div> 
 	
 	<div>
 		Description will go here
