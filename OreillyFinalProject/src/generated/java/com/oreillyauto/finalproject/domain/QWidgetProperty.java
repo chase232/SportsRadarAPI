@@ -22,8 +22,6 @@ public class QWidgetProperty extends EntityPathBase<WidgetProperty> {
 
     public static final QWidgetProperty widgetProperty = new QWidgetProperty("widgetProperty");
 
-    public final StringPath eventID = createString("eventID");
-
     public final StringPath eventKey = createString("eventKey");
 
     public final StringPath eventValue = createString("eventValue");
