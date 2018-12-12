@@ -41,10 +41,4 @@ public class Schedule {
         this.games = games;
     }
 
-    public Schedule[] getSchedule() {
-        //Schedule[] myArray = {getDate(), getLeague(), getGame()};
-        Schedule[] myArray = {};
-        return myArray;
-    }
-
 }

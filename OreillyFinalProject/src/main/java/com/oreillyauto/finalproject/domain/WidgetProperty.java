@@ -1,9 +1,12 @@
 package com.oreillyauto.finalproject.domain;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -12,16 +15,17 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "events_properties")
+@Table(name = "event_properties")
 public class WidgetProperty implements Serializable {
 
     private static final long serialVersionUID = 8973255663033274010L;
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "property_id", columnDefinition = "BIGINT")
-    private String propertyID;
+    private BigInteger propertyID;
     
-    @Column(name = "event_key", columnDefinition = "VARCHAR(50)")
+    @Column(name = "event_key", columnDefinition = "VARCHAR(100)")
     private String eventKey;
     
     @Column(name = "event_value", columnDefinition = "VARCHAR(160)")
@@ -29,16 +33,17 @@ public class WidgetProperty implements Serializable {
     
     @JsonIgnore
     @ManyToOne
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @JoinColumn(name = "event_id", referencedColumnName = "event_id", columnDefinition="BIGINT")
     private Widget widget;
     
-    WidgetProperty(){}
+    public WidgetProperty(){}
 
-    public String getPropertyID() {
+    public BigInteger getPropertyID() {
         return propertyID;
     }
 
-    public void setPropertyID(String propertyID) {
+    public void setPropertyID(BigInteger propertyID) {
         this.propertyID = propertyID;
     }
 

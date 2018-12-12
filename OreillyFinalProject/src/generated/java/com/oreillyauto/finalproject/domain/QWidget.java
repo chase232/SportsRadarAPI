@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -21,11 +22,13 @@ public class QWidget extends EntityPathBase<Widget> {
 
     public final StringPath dateTime = createString("dateTime");
 
-    public final StringPath eventID = createString("eventID");
+    public final NumberPath<java.math.BigInteger> eventID = createNumber("eventID", java.math.BigInteger.class);
 
     public final StringPath eventType = createString("eventType");
 
     public final StringPath smsSent = createString("smsSent");
+
+    public final ListPath<WidgetProperty, QWidgetProperty> widgetPropertiesList = this.<WidgetProperty, QWidgetProperty>createList("widgetPropertiesList", WidgetProperty.class, QWidgetProperty.class, PathInits.DIRECT2);
 
     public QWidget(String variable) {
         super(Widget.class, forVariable(variable));

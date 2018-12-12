@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Game {
 
+    private String id;
     private String scheduled;
     private boolean conference_game;
     private Venue venue;
@@ -14,6 +15,14 @@ public class Game {
    
     public Game() {
         
+    }
+    
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getScheduled() {

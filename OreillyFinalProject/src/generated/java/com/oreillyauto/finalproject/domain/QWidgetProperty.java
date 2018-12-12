@@ -26,7 +26,7 @@ public class QWidgetProperty extends EntityPathBase<WidgetProperty> {
 
     public final StringPath eventValue = createString("eventValue");
 
-    public final StringPath propertyID = createString("propertyID");
+    public final NumberPath<java.math.BigInteger> propertyID = createNumber("propertyID", java.math.BigInteger.class);
 
     public final QWidget widget;
 
