@@ -2,7 +2,10 @@ package com.oreillyauto.finalproject.domain;
 
 import java.io.Serializable;
 import java.math.BigInteger;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -79,7 +82,29 @@ public class Widget implements Serializable {
         this.smsSent = smsSent;
     }
     
+    public String getEventLocation() {
+        
+        String location = " ";
+        for (WidgetProperty widgetProperty : widgetPropertiesList) {
+            return widgetProperty.getEventKey();
+        }
+        return location;
+    }
     
+    public String getGame() {
+        
+        String game = " ";
+        for (WidgetProperty widgetProperty : widgetPropertiesList) {
+            return widgetProperty.getEventValue();
+        }
+        return game;
+    }
+    
+    public String getDateTimeString() {
+        String date = getDateTime();
+        String newDate = date.substring(0, 10);
+        return newDate;
+    }
 }
 
 

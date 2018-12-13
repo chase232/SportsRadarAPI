@@ -2,11 +2,13 @@ package com.oreillyauto.finalproject.controllers;
 
 import java.util.List;
 
+import org.hibernate.validator.constraints.Email;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
@@ -62,10 +64,16 @@ public class WidgetController extends BaseController {
         return gameParentList;
     }
     
+    @ResponseBody
+    @PostMapping(value = { "finalproject/text" })
+    public String postContactUs(Model model, Email email) throws Exception {
+        return "widget";
+    }
+    
     @GetMapping(value = {"finalproject/api"})
     public String getAPI(Model model) throws JsonProcessingException {
         String service = "Sports Radar";
-        String serviceUri = "http://api.sportradar.us/ncaamb/trial/v4/en/games/2018/12/11/schedule.json?api_key=n53y89q2b7xysgej6ywu9h4m";
+        String serviceUri = "http://api.sportradar.us/ncaamb/trial/v4/en/games/2018/12/13/schedule.json?api_key=n53y89q2b7xysgej6ywu9h4m";
         RestTemplate restTemplate = new RestTemplate();
         
         Schedule schedule = restTemplate.getForObject(serviceUri, Schedule.class);

@@ -1,6 +1,9 @@
 package com.oreillyauto.finalproject.service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -30,14 +33,17 @@ public class ScheduledTask {
         System.out.println("Got here");
         
      // EXAMPLE SCHEDULED TASK STRATEGY
-        String serviceUri = "http://api.sportradar.us/ncaamb/trial/v4/en/games/2018/12/15/schedule.json?api_key=n53y89q2b7xysgej6ywu9h4m";
+        String serviceUri = "http://api.sportradar.us/ncaamb/trial/v4/en/games/2018/12/14/schedule.json?api_key=n53y89q2b7xysgej6ywu9h4m";
         RestTemplate restTemplate = new RestTemplate();
         
         // Call the service and populate the Response Object
         Schedule responseJSON = restTemplate.getForObject(serviceUri, Schedule.class); 
         //Schedule[] schedule = responseJSON.getSchedule(); // Where “Features” is a custom array of data 
+
         Game[] gameArray = responseJSON.getGame();
         League league = responseJSON.getLeague();
+        
+        
  
         for (Game game : gameArray) {
             
@@ -51,7 +57,7 @@ public class ScheduledTask {
             
             String date = game.getScheduled();
             String newDate = date.substring(0, 10);
-            newDate = newDate + " 12:00:00.000";
+            newDate = newDate + " 0:00:00.000";
             System.out.println(newDate);
             
             Widget widget = new Widget();
@@ -61,9 +67,8 @@ public class ScheduledTask {
             
             WidgetProperty wp = new WidgetProperty();
             wp.setWidget(widget);
-            wp.setEventKey(game.getVenue().getName() + "  " + game.getVenue().getState());
-            wp.setEventValue(game.getHome().getAlias() + "  " + game.getHome().getName()
-                             + game.getAway().getAlias() + "  " + game.getAway().getName());
+            wp.setEventKey(game.getVenue().getName());
+            wp.setEventValue(game.getAway().getName() + " at " + game.getHome().getName());
             
             parentRepo.save(widget);
             childRepo.save(wp);

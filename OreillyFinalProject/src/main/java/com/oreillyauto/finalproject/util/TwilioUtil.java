@@ -67,7 +67,7 @@ public class TwilioUtil {
     
     public static void main(String[] args) throws IOException {
         TwilioUtil t = new TwilioUtil();
-        t.sendSms("+15736945653", "Test");
+        t.sendSms("+15736945653", "Data from table");
         
         //new Twilio("5736945653", "Test");
     }
