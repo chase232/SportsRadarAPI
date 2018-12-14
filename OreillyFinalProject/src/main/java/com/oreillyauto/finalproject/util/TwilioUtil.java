@@ -31,7 +31,7 @@ public class TwilioUtil {
         AUTH_TOKEN = appProperties.getProperty("twilio.token");
     }
     
-    private String sendSms(String number, String body) {
+    public String sendSms(String number, String body) {
         System.out.println("Got here");
         // If the cell is a known/good cell number, send the message
         if (number.equals(CHASE_CELL)) {

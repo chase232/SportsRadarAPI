@@ -4,11 +4,14 @@ import java.util.List;
 
 import com.oreillyauto.finalproject.domain.Widget;
 import com.oreillyauto.finalproject.domain.WidgetProperty;
+import com.oreillyauto.finalproject.dto.Text;
 
 public interface WidgetService {
 
     List<Widget> getAllParentGames();
 
     List<WidgetProperty> getAllChildGames();
+
+    void sendText(Text text);
 
 }

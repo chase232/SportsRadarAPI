@@ -2,7 +2,7 @@ package com.oreillyauto.finalproject.controllers;
 
 import java.util.List;
 
-import org.hibernate.validator.constraints.Email;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Controller;
@@ -17,7 +17,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.oreillyauto.finalproject.domain.Schedule;
 import com.oreillyauto.finalproject.domain.Widget;
-import com.oreillyauto.finalproject.domain.WidgetProperty;
+import com.oreillyauto.finalproject.dto.Text;
 import com.oreillyauto.finalproject.service.ScheduledTask;
 import com.oreillyauto.finalproject.service.WidgetService;
 
@@ -39,7 +39,7 @@ public class WidgetController extends BaseController {
         
         List<Widget> widgetParentList = widgetService.getAllParentGames();
         
-        for (Widget widget : widgetParentList) {
+/*        for (Widget widget : widgetParentList) {
             System.out.println(widget.getDateTime());
         }
         
@@ -47,7 +47,7 @@ public class WidgetController extends BaseController {
         
         for (WidgetProperty wp : widgetChildList) {
             System.out.println(wp.getEventKey());
-        }
+        }*/
         
         return "widget";
     }
@@ -66,8 +66,35 @@ public class WidgetController extends BaseController {
     
     @ResponseBody
     @PostMapping(value = { "finalproject/text" })
-    public String postContactUs(Model model, Email email) throws Exception {
-        return "widget";
+    public String postSendText(Model model, Text text) throws Exception {
+        
+        System.out.println("Number: " + text.getPhoneNumber() + "Text: " + text.getTextInformation());
+        
+/*        String body = text.getPhoneNumber() + text.getTextInformation();
+        if (body.length() > 160) {
+            text.getTextInformation().substring(0, 150);
+        }*/
+        
+        try {
+            text.setError(false);
+            text.setErrorMessage("");
+            widgetService.sendText(text);
+            return new ObjectMapper().writeValueAsString(text);
+        }
+        catch (Exception e) {
+            try {
+                text.setError(true);
+                text.setErrorMessage(e.getMessage());
+                return new ObjectMapper().writeValueAsString(text);
+            }
+            catch (JsonProcessingException jpe) {
+                text.setErrorMessage(jpe.getMessage());
+                return new JSONObject().put("error", true).put("errorMessage", jpe.getMessage()).toString();
+            }
+        }
+        //widgetService.sendText(text); 
+        
+        //return "widget";
     }
     
     @GetMapping(value = {"finalproject/api"})

@@ -33,7 +33,7 @@ public class ScheduledTask {
         System.out.println("Got here");
         
      // EXAMPLE SCHEDULED TASK STRATEGY
-        String serviceUri = "http://api.sportradar.us/ncaamb/trial/v4/en/games/2018/12/14/schedule.json?api_key=n53y89q2b7xysgej6ywu9h4m";
+        String serviceUri = "http://api.sportradar.us/ncaamb/trial/v4/en/games/2018/12/15/schedule.json?api_key=n53y89q2b7xysgej6ywu9h4m";
         RestTemplate restTemplate = new RestTemplate();
         
         // Call the service and populate the Response Object
@@ -47,18 +47,18 @@ public class ScheduledTask {
  
         for (Game game : gameArray) {
             
-            System.out.println(league.getName());
+/*            System.out.println(league.getName());
             System.out.println(game.getId());
             System.out.println("Home Team: " + game.getHome().getAlias() + "  " + game.getHome().getName());
             System.out.println("Away Team: " + game.getAway().getAlias() + "  " + game.getAway().getName());
             System.out.println("Location: " + game.getVenue().getName() + "  " + game.getVenue().getState());
             System.out.println("Date: " + game.getScheduled());
-            System.out.println("");
+            System.out.println("");*/
             
             String date = game.getScheduled();
             String newDate = date.substring(0, 10);
             newDate = newDate + " 0:00:00.000";
-            System.out.println(newDate);
+            //System.out.println(newDate);
             
             Widget widget = new Widget();
             widget.setDateTime(newDate);
