@@ -34,7 +34,7 @@ public class WidgetServiceImpl implements WidgetService {
     }
 
     @Override
-    public void sendText(Text text) {
+    public String sendText(Text text) {
         
         String phoneNumber = text.getPhoneNumber();
         String textInformation = text.getTextInformation();
@@ -42,12 +42,20 @@ public class WidgetServiceImpl implements WidgetService {
         TwilioUtil t = null;
         try {
             t = new TwilioUtil();
-            t.sendSms(phoneNumber, textInformation);
+            String message = t.sendSms(phoneNumber, textInformation);
+            return message;
         }
         catch (IOException e) {
             System.out.println("Error sending text");
             e.printStackTrace();
+            return "fail";
         }  
+    }
+
+    @Override
+    public List<Widget> getGameByDate(String newDate) {
+        List<Widget> gamesList =  widgetParentRepo.findByDateTime(newDate);
+        return gamesList;
     }
 
 }

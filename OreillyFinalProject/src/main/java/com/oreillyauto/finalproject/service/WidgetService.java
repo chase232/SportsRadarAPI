@@ -12,6 +12,9 @@ public interface WidgetService {
 
     List<WidgetProperty> getAllChildGames();
 
-    void sendText(Text text);
+    String sendText(Text text);
+
+    List<Widget> getGameByDate(String newDate);
+
 
 }

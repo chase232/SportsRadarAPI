@@ -32,6 +32,7 @@ public class TwilioUtil {
     }
     
     public String sendSms(String number, String body) {
+        
         System.out.println("Got here");
         // If the cell is a known/good cell number, send the message
         if (number.equals(CHASE_CELL)) {
@@ -58,10 +59,10 @@ public class TwilioUtil {
             RestTemplate restTemplate = new RestTemplate();
             ResponseEntity<String> response = restTemplate.postForEntity(url, entity, String.class);
             System.out.println(response);
-            return "sent";
+            return "success";
         } else {
             System.out.println("failed");
-            return "failed";
+            return "fail";
         }
     }
     
