@@ -36,21 +36,7 @@ public class WidgetController extends BaseController {
 
 
     @GetMapping(value = {"finalproject"})
-    public String getWidget(Model model) throws Exception {
-        System.out.println("Got here");
-        
-        List<Widget> widgetParentList = widgetService.getAllParentGames();
-        
-/*        for (Widget widget : widgetParentList) {
-            System.out.println(widget.getDateTime());
-        }
-        
-        List<WidgetProperty> widgetChildList = widgetService.getAllChildGames();
-        
-        for (WidgetProperty wp : widgetChildList) {
-            System.out.println(wp.getEventKey());
-        }*/
-        
+    public String getWidget(Model model) throws Exception {        
         return "widget";
     }
     
@@ -62,21 +48,27 @@ public class WidgetController extends BaseController {
         scheduledTask.setInitialDate();
          
         //List<Widget> gameParentList = widgetService.getAllParentGames();
+        
         List<Widget> widgetList = widgetService.getGameByDate("2018-12-16 0:00:00.000");
         return widgetList;
+        
         //return gameParentList;
     }
     
     @ResponseBody
     @PostMapping(value = "finalproject/postDate")
-    public List<Widget> postDate(Model model, Date date) throws InterruptedException{
+    public List<Widget> postDate(Model model, Date date) {
+        
         System.out.println(date.getDateOne() + " " + date.getDateTwo());
         scheduledTask.setUserDate(date.getDateOne());
+        
         //TimeUnit.SECONDS.sleep(2);
         //scheduledTask.setUserDate2(date.getMonth(), date.getYear(), date.getDay());
+        
         String newDate = date.getDateTwo() + " 0:00:00.000";
         List<Widget> widgetList = widgetService.getGameByDate(newDate);
         System.out.println("Made it past list");
+        
         for (Widget widget : widgetList) {
             System.out.println("1. " + widget.getDateTime() + widget.getGame());
         }
@@ -102,9 +94,10 @@ public class WidgetController extends BaseController {
         
         System.out.println("Number: " + text.getPhoneNumber() + " Text: " + text.getTextInformation());
         String body = text.getTextInformation();
+        
         if(text.getPhoneNumber() != null && text.getTextInformation() != null) {
             if (body.length() > 160) {
-                text.setTextInformation(text.getTextInformation().substring(0, 130));
+                text.setTextInformation(text.getTextInformation().substring(0, 122));
             }
         }
         try {
@@ -145,7 +138,7 @@ public class WidgetController extends BaseController {
         }
     }
     
-    @GetMapping(value = {"finalproject/api"})
+/*    @GetMapping(value = {"finalproject/api"})
     public String getAPI(Model model) throws JsonProcessingException {
         String service = "Sports Radar";
         String serviceUri = "http://api.sportradar.us/ncaamb/trial/v4/en/games/2018/12/13/schedule.json?api_key=n53y89q2b7xysgej6ywu9h4m";
@@ -163,7 +156,7 @@ public class WidgetController extends BaseController {
         return "widget";
     }
     
-    
+    */
 }
 
 

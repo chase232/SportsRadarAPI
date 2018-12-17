@@ -8,11 +8,11 @@
    		background-position: center center;   
    		background-color: black; 
 	}
-	h1 {
+ 	h1 {
 		/* color: #FB0007; */
 		padding: 10px;
 		font-size: 28px;
-	}
+	} 
 	.container {
 		/*background-color: #cccccc;*/
 		background-color: #FCDDA6;
@@ -47,7 +47,6 @@
 				width="480px" height="260px">
 	</div>
 </div>
-
 <div class="well">
 	<div class="row">
 		<div class="col-sm-1">
@@ -70,7 +69,7 @@
 	<div class="row">
 		<div class="col-sm-5">
 			<div class="row">
-				<label class="control-label col-sm-8">Please enter in a valid phone number </label>
+				<label class="control-label col-sm-9">Please enter in a valid phone number </label>
 			</div>
 			<div class="row">
 					<div class="form-group col-sm-6">			
@@ -184,6 +183,7 @@
 	                                     + checkedArray[i].game + "\n ";
 	               }       
 	               //checkedArray.allowTextSelection(false);
+	               
 	               grid.refresh();
 	               //output.innerHTML = textInformation;
 	               
