@@ -39,17 +39,30 @@ public class WidgetServiceImpl implements WidgetService {
         String phoneNumber = text.getPhoneNumber();
         String textInformation = text.getTextInformation();
         
-        TwilioUtil t = null;
+//        TwilioUtil t = null;
+//        try {
+//            t = new TwilioUtil();
+//            String message = t.sendSms(phoneNumber, textInformation);
+//            return message;
+//        }
+//        catch (IOException e) {
+//            System.out.println("Error sending text");
+//            e.printStackTrace();
+//            return "fail";
+//        }  
+        
+        TwilioServiceImpl t = null;
         try {
-            t = new TwilioUtil();
+            t = new TwilioServiceImpl();
             String message = t.sendSms(phoneNumber, textInformation);
+            
             return message;
         }
         catch (IOException e) {
             System.out.println("Error sending text");
             e.printStackTrace();
             return "fail";
-        }  
+        }     
     }
 
     @Override

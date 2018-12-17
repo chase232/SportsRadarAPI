@@ -1,6 +1,7 @@
 package com.oreillyauto.finalproject.controllers;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,18 +60,20 @@ public class WidgetController extends BaseController {
         
         System.out.println("tried table");
         scheduledTask.setInitialDate();
-        
-        Widget w = new Widget();   
-        List<Widget> gameParentList = widgetService.getAllParentGames();
-        
-        return gameParentList;
+         
+        //List<Widget> gameParentList = widgetService.getAllParentGames();
+        List<Widget> widgetList = widgetService.getGameByDate("2018-12-16 0:00:00.000");
+        return widgetList;
+        //return gameParentList;
     }
     
     @ResponseBody
     @PostMapping(value = "finalproject/postDate")
-    public List<Widget> postDate(Model model, Date date){
+    public List<Widget> postDate(Model model, Date date) throws InterruptedException{
         System.out.println(date.getDateOne() + " " + date.getDateTwo());
         scheduledTask.setUserDate(date.getDateOne());
+        //TimeUnit.SECONDS.sleep(2);
+        //scheduledTask.setUserDate2(date.getMonth(), date.getYear(), date.getDay());
         String newDate = date.getDateTwo() + " 0:00:00.000";
         List<Widget> widgetList = widgetService.getGameByDate(newDate);
         System.out.println("Made it past list");
@@ -140,9 +143,6 @@ public class WidgetController extends BaseController {
                 return new JSONObject().put("error", true).put("errorMessage", jpe.getMessage()).toString();
             }
         }
-        //widgetService.sendText(text); 
-        
-        //return "widget";
     }
     
     @GetMapping(value = {"finalproject/api"})

@@ -1,84 +1,114 @@
 <%@ include file="/WEB-INF/layouts/include.jsp"%>
 <style>
 	body {
-		background-image: url("basketball.jpg");
-		background: basketball.jpg;
-		background-color: #3071A9;
+		padding-top: 20px;
+		background-image: url("http://pluspng.com/img-png/basketball-court-png-hd-basketball-court-background-related-keywords-suggestions-2085.png");
+		background-image: url("https://wallpapercave.com/wp/fiX2Wk3.jpg");
+		background-repeat:   no-repeat;
+   		background-position: center center;   
+   		background-color: black; 
 	}
 	h1 {
-		color: #FB0007;
+		/* color: #FB0007; */
 		padding: 10px;
 		font-size: 28px;
 	}
 	.container {
-		background-color: #cccccc;
+		/*background-color: #cccccc;*/
+		background-color: #FCDDA6;
+	}
+	.header {
+		margin-bottom: -45px;
+		margin-top: -45px;
 	}
 	#description {
-		font-size: 14px;
-	}
-	label, button{
 		font-size: 16px;
 	}
-	
-	#phoneNumber, #gameDate, input {
+	label, button, input {
+		font-size: 16px;
+	}
+		
+	#phoneNumber, #gameDate {
 		font-size:  16px;
 	}
+
 	
 </style>
 <body>
 <div class="container">
-<h1>SPORTRADAR API NCAAM</h1>
+<!-- <div class="row">
+	<div class="col-sm-4">
+		<h1>SPORTRADAR API NBA</h1>
+	</div>
+</div> -->
+<div class="row">
+	<div class="col-sm-4 header">
+		<img src="http://www.bonus.org.uk/wp-content/uploads/2015/10/Sportradar.png" alt="srLogo"
+				width="480px" height="260px">
+	</div>
+</div>
+
 <div class="well">
 	<div class="row">
-		<div class="col-lg-12">
+		<div class="col-sm-1">
+			<img src="https://cdn.freebiesupply.com/images/large/2x/nba-logo-transparent.png" alt="logo"
+			 	width="80px" height="180px">
+		</div>
+		<div class="col-sm-11">
 			<div>
 				<h2>Description</h2>
 					<div id="description">This webpage will return data from the sportradar API. The data that will be returned is a daily schedule from
-				 		a specific date in NCAAM Basketball. 
+				 		a specific date in the NBA. Change the date with the date selector below to view the game schedule for that
+				 		date. Check the check boxes of a row or rows to send information via text to a valid number. Ensure the 
+				 		number has a +1 at the beginning. The send button will then send the selected check boxes to the number.
 					</div>
 			</div>
 		</div>
-</div> 	
+	</div> 	
 </div>
 <div id="message"></div>	
 	<div class="row">
-		<div class="col-sm-4">
-			<label class="control-label">Please enter in a valid phone number </label>
-		</div>	
-        <div class="col-sm-3"></div>
-	   		<label class="form-label col-sm-3" for="startDate">Pick a date to view schedule</label>
-	</div>
-	<div class="row">
-		<div class="col-sm-2">
-			<div class="form-group">			
-			   <input class="form-control" 
-			   			id="phoneNumber"
-			   			placeholder="+15736945653"
-        				data-dojo-type="dijit/form/ValidationTextBox" 
-        				<%-- data-dojo-props="regExp:'[^[0][1-9]\d{9}$|^[1-9]\d{9}$]'" --%>/> 
+		<div class="col-sm-5">
+			<div class="row">
+				<label class="control-label col-sm-8">Please enter in a valid phone number </label>
 			</div>
-		</div>
-		<div class="col-sm-5"></div>
-		<div class="form-group">
-				<fieldset>							
-				    <div class="col-sm-3">
-					    <input type="date" id="gameDate" name="gameDate"
-							               value="2018-12-15"
-							               min="2018-10-01" max="2019-03-15" />
-					</div>							
-				</fieldset>
-		</div>
-	</div>
-	<div class="row">	
-			<div class="col-sm-2">
-	            <button class="btn btn-primary"
-	             		data-dojo-id="formSubmit"
-	                    data-dojo-type="oreilly/types/form/Button"
-	                    data-dojo-props="spinOnClick: true" id="checkedButton" type="submit">
-	                    Send
-	            </button>
-       		</div>
-       		<div class="col-sm-5"></div>
+			<div class="row">
+					<div class="form-group col-sm-6">			
+			   			<input class="form-control" 
+				   			id="phoneNumber"
+				   			placeholder="+15736945653"
+	        				data-dojo-type="dijit/form/ValidationTextBox" 
+	        				<%-- data-dojo-props="regExp:'[^[0][1-9]\d{9}$|^[1-9]\d{9}$]'" --%>/> 
+					</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-2">
+		            <button class="btn btn-primary"
+		             		data-dojo-id="formSubmit"
+		                    data-dojo-type="oreilly/types/form/Button"
+		                    data-dojo-props="spinOnClick: true" id="checkedButton" type="submit">
+		                    Send
+		            </button>
+		        </div>
+			</div>
+		</div>	
+		<div class="col-sm-7">
+			<div class="row">
+				<label class="form-label col-sm-8" for="startDate">Pick a date to view schedule</label>
+			</div>
+			<div class="row">
+				<div class="form-group">
+					<fieldset>							
+					    <div class="col-sm-4">
+						    <input type="date" id="gameDate" name="gameDate"
+								               value="2018-12-16"
+								               min="2018-08-01" max="2019-07-31" />
+						</div>							
+					</fieldset>
+				</div>
+			</div>
+		
+		<div class="row">	
        		<div class="col-sm-2">
 	            <button class="btn btn-primary"
 	             		data-dojo-id="setDate"
@@ -86,7 +116,9 @@
 	                    data-dojo-props="spinOnClick: true" id="setDate" type="submit">
 	                    Set Date
 	            </button>
-       	</div>
+       		</div>
+		</div>
+		</div>
 	</div>
 <div class="row">
 	<div class="col-sm-12">
@@ -112,9 +144,9 @@
 		</div>
 	</div>
 </div>
-<div class="row">
+<!-- <div class="row">
 	<div class="col-sm-6"><div id="output"></div></div>
-</div>
+</div> -->
 </div>
 </body>
 <script>
@@ -143,16 +175,17 @@
 	        	   buttonText.stopSpinner();
 	               let btn = this;
 	               let checkedArray = grid.getChecked();
-	               let output = dom.byId("output");
+	               //let output = dom.byId("output");
 	               var textInformation = "";
 	               var ids = "";
 	               for (var i = 0; i < checkedArray.length; i++) {
-	            	   checkedArray[i].enable = false;
 	            	   ids += checkedArray[i].eventID + ", ";
 	            	   textInformation += "Event ID: " + checkedArray[i].eventID + "\n Game: "
 	                                     + checkedArray[i].game + "\n ";
-	               }           
-	               output.innerHTML = textInformation;
+	               }       
+	               //checkedArray.allowTextSelection(false);
+	               grid.refresh();
+	               //output.innerHTML = textInformation;
 	               
 	               // Load the Table after the DOM is ready
 				   request('<c:url value="/finalproject/text" />', {
@@ -196,14 +229,83 @@
 				var y = date.getFullYear();
 				date = y + '/'+ mm + '/'+dd;
 				var newDate = y + '-'+ mm + '-'+dd;
-	        	console.log(date);
-	        	// Load the Table after the DOM is ready
-				   request('<c:url value="/finalproject/postDate" />', {
-				   		method : 'POST',
-						handleAs : "json",
-						data : {
+				var month = mm;
+				var year = y;
+				var day = dd;
+				
+				switch (newDate) {
+						case "2018-7-32":
+							newDate = "2018-08-01";
+							month = "8";
+							day = "01";
+							break;
+						case "2018-8-32":
+							newDate = "2018-09-01";
+							month = "9";
+							day = "01";
+							break;
+						case "2018-9-31":
+							newDate = "2018-10-01";
+							month = "10";
+							day = "01";
+							break;
+						case "2018-10-32":
+							newDate = "2018-11-01";
+							month = "11";
+							day = "01";
+							break;
+						case "2018-11-31":
+							newDate = "2018-12-01";
+							month = "12";
+							day = "01";
+							break;
+						case "2018-12-32":
+							newDate = "2019-01-01";
+							month = "1";
+							day = "01";
+							break;
+						case "2019-1-32":
+							newDate = "2019-02-01";
+							month = "2";
+							day = "2";
+							break;
+						case "2019-2-29":
+							newDate = "2019-03-01";
+							month = "3";
+							day = "01";
+							break;
+						case "2019-3-32":
+							newDate = "2019-04-01";
+							month = "4";
+							day = "01";
+							break;
+						case "2019-4-31":
+							newDate = "2019-05-01";
+							month = "5";
+							day = "01";
+							break;
+						case "2019-5-32":
+							newDate = "2019-06-01";
+							month = "6";
+							day = "01";
+							break;
+						case "2019-6-31":
+							newDate = "2019-07-01";
+							month = "7";
+							day = "01";
+							break;
+						}
+						console.log(date);
+						// Load the Table after the DOM is ready
+						request('<c:url value="/finalproject/postDate" />', {
+							method : 'POST',
+							handleAs : "json",
+							data : {
 								'dateOne' : date,
-								'dateTwo' : newDate
+								'dateTwo' : newDate,
+								'month' : month,
+								'year' : y,
+								'day' : day
 							}
 						}).then(function(data) {
 							//grid.store.setData(JSON.parse(data));
@@ -213,23 +315,23 @@
 							console.log(data);
 							let json = JSON.parse(data);
 							btn.stopSpinner();
-	        			});
-				   /* request('<c:url value="/finalproject/getGamesByDate" />', {
-					    method : 'POST',
-						handleAs : "json",
-						data : {
-								'date' : newDate
-							}
-				   }).then(function(data) {
-						grid.store.setData(JSON.parse(data));
-						grid.refresh();
-					}, function(err) {
-						console.log("Error: " + err);
+						});
+						/* request('<c:url value="/finalproject/getGamesByDate" />', {
+						    method : 'POST',
+							handleAs : "json",
+							data : {
+									'date' : newDate
+								}
+						}).then(function(data) {
+							grid.store.setData(JSON.parse(data));
+							grid.refresh();
+						}, function(err) {
+							console.log("Error: " + err);
+						});
+						grid.refresh(); */
 					});
-					grid.refresh(); */
+				});
 			});
-		});
- 	});
 </script>
 
 
