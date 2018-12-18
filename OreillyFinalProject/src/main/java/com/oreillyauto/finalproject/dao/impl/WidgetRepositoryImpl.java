@@ -17,8 +17,8 @@ public class WidgetRepositoryImpl extends QuerydslRepositorySupport implements W
         super(Widget.class);
     }
 
-    /*@Override
-    public Widget showGameById(int i) {
+/*    @Override
+    public Widget getGameById(int i) {
         
         QWidget widget = QWidget.widget;
         BigInteger bigInt = BigInteger.valueOf(i);

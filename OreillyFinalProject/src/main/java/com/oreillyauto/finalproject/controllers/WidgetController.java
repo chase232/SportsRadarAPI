@@ -106,12 +106,14 @@ public class WidgetController extends BaseController {
             if(test.equals("success")) {
                 System.out.println("text size: " + text.getTextInformation().length());
                 text.setError(false);
-                //int sentArray[] = text.getIds();
-                //for (int i : sentArray) {
-                    //Widget w = widgetService.getGameById(i);
-                    //w.setSmsSent("Y");
-                    //widgetService.saveGame(w);
-                //}
+                
+               int sentArray[] = text.getIds();
+               for (int i : sentArray) {
+                    Widget w = widgetService.findByEventID(i);
+                    w.setSmsSent("Y");
+                    widgetService.saveGame(w);
+                    System.out.println("Saved");
+                }
                 return new ObjectMapper().writeValueAsString(text);
             }else {
                 text.setError(true);

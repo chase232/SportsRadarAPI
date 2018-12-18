@@ -71,15 +71,17 @@ public class WidgetServiceImpl implements WidgetService {
         return gamesList;
     }
 
-    /*@Override
-    public Widget getGameById(int i) {
-        return widgetParentRepo.showGameById(i); 
-    }*/
-
-    /*@Override
+    @Override
     public void saveGame(Widget w) {
         widgetParentRepo.save(w);
-    }*/
+    }
+
+    @Override
+    public Widget findByEventID(int i) {
+        BigInteger bigInt = BigInteger.valueOf(i);
+        Widget w = widgetParentRepo.findByEventID(bigInt);
+        return w;
+    }
 
 
 }
