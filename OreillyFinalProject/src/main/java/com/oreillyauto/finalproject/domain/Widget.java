@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -37,7 +38,7 @@ public class Widget implements Serializable {
     @Column(name = "sms_sent", columnDefinition = "VARCHAR(1)")
     private String smsSent;
     
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "widget")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.MERGE, mappedBy = "widget")
     private List<WidgetProperty> widgetPropertiesList = new ArrayList<>();
     
     public Widget() {}

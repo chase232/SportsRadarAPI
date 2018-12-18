@@ -1,7 +1,6 @@
 package com.oreillyauto.finalproject.controllers;
 
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.oreillyauto.finalproject.domain.Schedule;
+import com.oreillyauto.finalproject.dao.WidgetParentRepository;
 import com.oreillyauto.finalproject.domain.Widget;
 import com.oreillyauto.finalproject.dto.Date;
 import com.oreillyauto.finalproject.dto.Text;
@@ -47,7 +45,7 @@ public class WidgetController extends BaseController {
         System.out.println("tried table");
         scheduledTask.setInitialDate();
          
-        //List<Widget> gameParentList = widgetService.getAllParentGames();
+        List<Widget> gameParentList = widgetService.getAllParentGames();
         
         List<Widget> widgetList = widgetService.getGameByDate("2018-12-16 0:00:00.000");
         return widgetList;
@@ -108,6 +106,12 @@ public class WidgetController extends BaseController {
             if(test.equals("success")) {
                 System.out.println("text size: " + text.getTextInformation().length());
                 text.setError(false);
+                //int sentArray[] = text.getIds();
+                //for (int i : sentArray) {
+                    //Widget w = widgetService.getGameById(i);
+                    //w.setSmsSent("Y");
+                    //widgetService.saveGame(w);
+                //}
                 return new ObjectMapper().writeValueAsString(text);
             }else {
                 text.setError(true);

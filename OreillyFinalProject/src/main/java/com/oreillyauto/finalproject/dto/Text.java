@@ -6,6 +6,7 @@ public class Text {
     private String textInformation;
     private boolean error;
     private String errorMessage;
+    private int[] ids;
 
     public Text() {
     
@@ -47,4 +48,14 @@ public class Text {
     public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
     }
+
+    public int[] getIds() {
+        return ids;
+    }
+
+    public void setIds(int[] ids) {
+        this.ids = ids;
+    }
+    
+    
 }

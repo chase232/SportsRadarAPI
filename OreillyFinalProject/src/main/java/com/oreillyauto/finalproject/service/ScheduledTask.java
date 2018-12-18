@@ -32,6 +32,21 @@ public class ScheduledTask {
 
     //@Scheduled(fixedRate = 30000)    //   <=== This method will run every 30 seconds
     public void setInitialDate() {
+        
+        int checkDate = 0; 
+        for (String game : gameList) {
+            if(game.equals("2018/12/16")) {
+                System.out.println("Date already in database");
+                return;
+            } else {
+                checkDate++;
+            }
+        }
+        
+        if (checkDate == gameList.size()) {
+            gameList.add("2018/12/16");
+        }
+        
         String date = "2018/12/16";
         gameList.add(date);
         System.out.println("Got here");

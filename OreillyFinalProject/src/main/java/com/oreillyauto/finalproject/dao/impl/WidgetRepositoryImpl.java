@@ -1,7 +1,8 @@
 package com.oreillyauto.finalproject.dao.impl;
 
-import java.util.List;
+import java.math.BigInteger;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
 import org.springframework.stereotype.Repository;
 
@@ -15,6 +16,24 @@ public class WidgetRepositoryImpl extends QuerydslRepositorySupport implements W
     public WidgetRepositoryImpl() {
         super(Widget.class);
     }
+
+    /*@Override
+    public Widget showGameById(int i) {
+        
+        QWidget widget = QWidget.widget;
+        BigInteger bigInt = BigInteger.valueOf(i);
+        
+        try {
+            Widget w = (Widget) getQuerydsl().createQuery()
+                    .from(widget)
+                    .where(widget.eventID.eq(bigInt))
+                    .fetchFirst();
+            return w;
+        }
+        catch (EmptyResultDataAccessException e) {
+            return null;
+        }
+    }*/
 
 }
 

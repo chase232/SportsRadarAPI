@@ -2,16 +2,11 @@
 <style>
 	body {
 		padding-top: 20px;
-		background-image: url("http://pluspng.com/img-png/basketball-court-png-hd-basketball-court-background-related-keywords-suggestions-2085.png");
-		background-image: url("https://wallpapercave.com/wp/fiX2Wk3.jpg");
+		background-image: url("https://wallpapercave.com/wp/fiX2Wk3.jpg"); 
+		/*background-image: url("/images/background.jpg");*/
 		background-repeat:   no-repeat;
    		background-position: center center;   
    		background-color: black; 
-	}
- 	h1 {
-		/* color: #FB0007; */
-		padding: 10px;
-		font-size: 28px;
 	} 
 	.container {
 		/*background-color: #cccccc;*/
@@ -31,7 +26,15 @@
 	#phoneNumber, #gameDate {
 		font-size:  16px;
 	}
-
+	.col1 {
+		width: 120px;
+	}
+	.col2 {
+		width: 120px;
+	}
+	.col3 {
+		width: 180px;
+	}
 	
 </style>
 <body>
@@ -105,8 +108,7 @@
 						</div>							
 					</fieldset>
 				</div>
-			</div>
-		
+			</div>	
 		<div class="row">	
        		<div class="col-sm-2">
 	            <button class="btn btn-primary"
@@ -132,11 +134,11 @@
 					data-dojo-props="store: widgetSport, loadDataOnStartup: true">
 					<thead>
 						<tr>
-							<th class="hyperlink" data-dgrid-column='{field:"eventID", name:"eventID"}'>Event ID</th>					
-							<th class="hyperlink" data-dgrid-column='{field:"eventType", name:"eventType"}'>League</th>
-							<th class="hyperlink" data-dgrid-column='{field:"dateTimeString", name:"dateTimeString"}'>Event Date</th>
-							<th class="hyperlink" data-dgrid-column='{field:"eventLocation", name:"eventLocation"}'>Event Location</th>
-							<th class="hyperlink" data-dgrid-column='{field:"game", name:"game"}'>Teams</th>
+							<th class="hyperlink col1" data-dgrid-column='{field:"eventID", name:"eventID"}'>Event ID</th>					
+							<th class="hyperlink col2" data-dgrid-column='{field:"eventType", name:"eventType"}'>League</th>
+							<th class="hyperlink col3" data-dgrid-column='{field:"dateTimeString", name:"dateTimeString"}'>Event Date</th>
+							<th class="hyperlink col4" data-dgrid-column='{field:"eventLocation", name:"eventLocation"}'>Event Location</th>
+							<th class="hyperlink col5" data-dgrid-column='{field:"game", name:"game"}'>Teams</th>
 					</thead>
 				</table>
 			</div>
@@ -152,13 +154,15 @@
  	require([ 'dojo/request', 
  		'dijit/registry', 
  		'dojo/ready',
- 		'dojo/dom'], function(request, registry, ready, dom) {
+ 		'dojo/dom',
+ 		'dojo/dom-construct'], function(request, registry, ready, dom, domConstruct) {
 		ready(function() {
 			var grid = registry.byId("sport");
 			var store = registry.byId("widgetSport");
 			var buttonText = registry.byId("checkedButton");
 			var buttonDate = registry.byId("setDate");
-			var alertManager = registry.byId('alertManager');
+			var alertManager = registry.byId('alertManager');			
+			var sentArray = [];
 			
 			request('<c:url value="/finalproject/getGames"/>').then(function(data) {
 				console.log(data);
@@ -177,14 +181,23 @@
 	               //let output = dom.byId("output");
 	               var textInformation = "";
 	               var ids = "";
+
 	               for (var i = 0; i < checkedArray.length; i++) {
+	            	   //sentArray.push(checkedArray[i]);
 	            	   ids += checkedArray[i].eventID + ", ";
 	            	   textInformation += "Event ID: " + checkedArray[i].eventID + "\n Game: "
 	                                     + checkedArray[i].game + "\n ";
+	            	   
+	            	   cb = registry.byId("oap-checkbox-" + checkedArray[i].eventID + "sport");
+	            	   cb.setAttribute("aria-checked", false);
+	            	   cb.setChecked(false);
+	            	   
+	            	   sentArray.push("oap-checkbox-" + checkedArray[i].eventID + "sport");
+					   cb.setDisabled(true);
+	            	   domConstruct.destroy("oap-checkbox-" + checkedArray[i].eventID + "sport");
+	            	   
 	               }       
-	               //checkedArray.allowTextSelection(false);
-	               
-	               grid.refresh();
+	               //grid.refresh();
 	               //output.innerHTML = textInformation;
 	               
 	               // Load the Table after the DOM is ready
@@ -194,6 +207,7 @@
 						data : {
 								'phoneNumber' : phoneNumber,
 								'textInformation' : textInformation
+								//'ids' : sentArray
 							}
 						}).then(function(data) {
 							alertManager.hide();
@@ -205,10 +219,12 @@
 								msg = "Text Sent Successfully to " + phoneNumber + " with Ids " + ids;
 								alertManager.addSuccess({message: msg, position: 'message', hide : false});
 								alertManager.addError({ hide : true});
+								//grid.refresh();
 							} else {								
 								msg = (json.errorMessage == '' || json.errorMessage == "undefined") ? 'Unknown Exception' : json.errorMessage;
 								alertManager.addError({message: msg, position: 'message' , hide : false});
 								alertManager.addSuccess({ hide : true});
+								//grid.refresh();
 							}
 						}, function(err) {
 							console.log("Error: " + err);
@@ -219,6 +235,9 @@
 				});
 			
 	        buttonDate.on('click',function() {
+/* 	        	for (int i = 0; i < sentArray.length; i++){
+	        		domConstruct.destroy("oap-checkbox-" + sentArray[i].eventID + "sport");
+	        	} */
 	        	buttonDate.stopSpinner();
 	        	let btn = this;
 	        	var date = document.getElementById("gameDate").value;

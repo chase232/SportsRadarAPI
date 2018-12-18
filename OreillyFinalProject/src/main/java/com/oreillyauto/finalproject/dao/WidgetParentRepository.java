@@ -10,6 +10,4 @@ import com.oreillyauto.finalproject.domain.Widget;
 public interface WidgetParentRepository extends CrudRepository<Widget, Integer>, WidgetRepositoryCustom {
 
     List<Widget> findByDateTime(String newDate);
-
-
 }

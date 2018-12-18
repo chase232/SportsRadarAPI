@@ -16,5 +16,9 @@ public interface WidgetService {
 
     List<Widget> getGameByDate(String newDate);
 
+    //Widget getGameById(int i);
+
+    //void saveGame(Widget w);
+
 
 }

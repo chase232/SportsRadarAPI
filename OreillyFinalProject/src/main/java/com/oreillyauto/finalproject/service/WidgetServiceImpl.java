@@ -1,6 +1,7 @@
 package com.oreillyauto.finalproject.service;
 
 import java.io.IOException;
+import java.math.BigInteger;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,6 @@ import com.oreillyauto.finalproject.dao.WidgetParentRepository;
 import com.oreillyauto.finalproject.domain.Widget;
 import com.oreillyauto.finalproject.domain.WidgetProperty;
 import com.oreillyauto.finalproject.dto.Text;
-import com.oreillyauto.finalproject.util.TwilioUtil;
 
 
 @Service("widgetService")
@@ -70,5 +70,16 @@ public class WidgetServiceImpl implements WidgetService {
         List<Widget> gamesList =  widgetParentRepo.findByDateTime(newDate);
         return gamesList;
     }
+
+    /*@Override
+    public Widget getGameById(int i) {
+        return widgetParentRepo.showGameById(i); 
+    }*/
+
+    /*@Override
+    public void saveGame(Widget w) {
+        widgetParentRepo.save(w);
+    }*/
+
 
 }
