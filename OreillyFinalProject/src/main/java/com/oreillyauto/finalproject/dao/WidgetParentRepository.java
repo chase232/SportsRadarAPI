@@ -12,5 +12,6 @@ public interface WidgetParentRepository extends CrudRepository<Widget, Integer>,
 
     List<Widget> findByDateTime(String newDate);
     //Widget getGameById(int i);
-    Widget findByEventID(BigInteger bigInt);  
+    Widget findByEventID(BigInteger bigInt);
+    List<Widget> findBySmsSent(String yes);  
 }

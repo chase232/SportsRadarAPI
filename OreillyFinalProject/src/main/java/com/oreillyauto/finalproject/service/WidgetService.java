@@ -20,4 +20,6 @@ public interface WidgetService {
 
     Widget findByEventID(int i);
 
+    List<Widget> findBySmsSent(String yes);
+
 }

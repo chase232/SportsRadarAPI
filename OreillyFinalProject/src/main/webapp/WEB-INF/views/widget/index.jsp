@@ -1,3 +1,9 @@
+<%--
+Index.jsp
+---------
+This .jsp file holds majority of UI and contains the bulk of the js
+ --%>
+
 <%@ include file="/WEB-INF/layouts/include.jsp"%>
 <body>
 	<div class="container">
@@ -98,7 +104,6 @@
 				<div class="mt10" id="objectMapperTable">
 					<div data-dojo-id="widgetSport" data-dojo-type="dojo/store/Memory"
 						data-dojo-props="data: [], idProperty: 'eventID'"></div>
-
 					<div id="objectMapperGrid" class="span12">
 						<table id="sport" class="table table-striped table-bordered"
 							data-dojo-type="oreilly/types/dgrid/PagingGridCheckBox"
@@ -125,11 +130,12 @@
 </body>
 <script>
 	var sentArray = [];
+	var loadedArray = [];
 	require(
-			[ 'dojo/request', 'dijit/registry', 'dojo/ready', 'dojo/dom',
-					'dojo/dom-construct' ],
+			[ 'dojo/request', 'dijit/registry', 'dojo/ready', 'dojo/dom'],
 			function(request, registry, ready, dom, domConstruct) {
 				ready(function() {
+							
 					var grid = registry.byId('sport');
 					var store = registry.byId('widgetSport');
 					var buttonText = registry.byId('checkedButton');
@@ -140,16 +146,48 @@
 					//var sentArray = [];
 					var idArray = [];
 					var header = registry.byId('oap-checkboxheader-sport');
-					var numberTab = registry.byId('paginationNodesport');
-					//var pag = registry.byId('paginationParent');
 					request('<c:url value="/finalproject/getGames"/>').then(
 							function(data) {
+/* 								if(typeof store == 'undefined'){
+									alertManagerSuccess.hide();
+									alertManagerFail.hide();
+									alertManagerWarning.hide();
+									alertManagerSuccess.clear();
+									var msg = "REFRESH PAGE";
+									alertManagerFail.addError({message : msg, position : 'messageFail', hide : false});
+									alertManagerSuccess.addSuccess({hide : true});
+								} */
 								grid.store.setData(JSON.parse(data));
 								grid.refresh();
+								request('<c:url value="/finalproject/getSmsSent"/>').then(
+										function(data) {
+											JSON.parse(data);
+										    var num;
+											var k;
+											for(var i = 0; i < data.length; i++){
+												num = Number(data[i]);
+												if(isNaN(num)){
+
+												} else{
+													if(data[i + 1] == "," || data[i + 1] == "]") {
+														sentArray.push("oap-checkbox-" + data[i] + "sport");
+													}else {
+														k = data[i] + data[i+1];
+														sentArray.push("oap-checkbox-" + k + "sport");
+														i++;
+													}											
+												}							
+											} 
+											checkBoxes(); 
+											
+										}, function(err) {
+											console.log("Error: " + err);
+										});		
 							}, function(err) {
 								console.log("Error: " + err);
 							});
 					grid.refresh();
+					
 					// Button Event
 					buttonText.on('click', function() {
 						var phoneNumber = registry.byId("phoneNumber").value;
@@ -289,6 +327,13 @@
 							day = "01";
 							break;
 						}
+						if(date == "NaN/NaN/NaN"){
+							date = "2018/08/01";
+							newDate = "2018-8-01";
+							day = "1";
+							month = "8";
+							year = "2018";
+						}
 						console.log(date);
 						// Load the Table after the DOM is ready
 						request('<c:url value="/finalproject/postDate" />', {
@@ -301,10 +346,10 @@
 								'year' : y,
 								'day' : day
 							}
-						}).then(function(data) {
+						}).then(function(data) {							
 							//grid.store.setData(JSON.parse(data));
 							grid.store.setData(data);
-							grid.refresh();
+							grid.refresh();						
 							//console.log(data);
 							//let json = JSON.parse(data);
 							alertManagerSuccess.hide();
@@ -313,15 +358,19 @@
 							alertManagerSuccess.clear();
 							alertManagerWarning.clear();
 							var msg;
+							//if (data.length > 10){
+								//var pag = registry.byId('paginationParent');
+							//}
 							if(data.length == 0){
 								msg = "No games on the date " + newDate;
 								alertManagerWarning.addWarning({message: msg, position : 'messageWarning', hide : false, duration : 5000});
-							} else {
+							} else {							
 								msg = "API loaded games for " + newDate;
 								alertManagerSuccess.addSuccess({message : msg, position : 'messageSuccess', hide : false, duration : 10000});
 								alertManagerFail.addError({hide : true});
 							}
 							btn.stopSpinner();
+							grid.refresh();
 							checkBoxes();
 						});
 					});
@@ -331,18 +380,24 @@
 					grid.on('click', function() {
 						checkBoxes();
 					});
-					numberTab.on('click', function() {
+					/* pag.on('click', function() {
 						checkBoxes();
-					});
+					}); */
 				});
 				function checkBoxes(){
 					for (let i = 0; i < sentArray.length; i++) {
 						let cb = registry.byId(sentArray[i]);
-						cb.setAttribute("aria-checked", false);
-						cb.setChecked(false);
-						cb.setDisabled(true);
-					}
-				}
+						if(typeof cb == 'undefined'){
+							
+						}else {
+							cb.setAttribute("aria-checked", false);
+							cb.setChecked(false);
+							cb.setDisabled(true);
+							console.log("Got here");
+						}
+						
+					} 
+				}				
 			});
 </script>
 

@@ -83,5 +83,11 @@ public class WidgetServiceImpl implements WidgetService {
         return w;
     }
 
+    @Override
+    public List<Widget> findBySmsSent(String yes) {
+        List<Widget> w =  widgetParentRepo.findBySmsSent(yes);
+        return w;
+    }
+
 
 }

@@ -66,12 +66,17 @@ public class TwilioServiceImpl {
             LookupsClient client = new LookupsClient(ACCOUNT_SID, AUTH_TOKEN);
             PhoneNumber phoneNumber = client.getPhoneNumber(number, true);
             
-            if(LANDLINE.equalsIgnoreCase(phoneNumber.getType().toString())) {
-                System.out.println("landline");
-                return "landline";
-            } else {
+            try {
+                if(LANDLINE.equalsIgnoreCase(phoneNumber.getType().toString())) {
+                    System.out.println("landline");
+                    return "landline";
+                } else {
+                    System.out.println("failed");
+                    return "fail";
+                }
+            } catch(Exception e) {
                 System.out.println("failed");
-                return "fail";   
+                return "fail";
             }
         }
     }

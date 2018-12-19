@@ -1,5 +1,14 @@
+/**
+ * Class:       WidgetController
+ * Developer:   Chase Dickerson
+ * Date:        12/19/2018
+ * Purpose:     Controls the flow and direction of the project
+ */
+
 package com.oreillyauto.finalproject.controllers;
 
+import java.math.BigInteger;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONObject;
@@ -14,7 +23,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.oreillyauto.finalproject.dao.WidgetParentRepository;
 import com.oreillyauto.finalproject.domain.Widget;
 import com.oreillyauto.finalproject.dto.Date;
 import com.oreillyauto.finalproject.dto.Text;
@@ -27,41 +35,34 @@ import com.oreillyauto.finalproject.service.WidgetService;
 public class WidgetController extends BaseController {
     
     @Autowired
-    ScheduledTask scheduledTask;   // Kicks off your custom service
+    ScheduledTask scheduledTask;  
     
     @Autowired
     WidgetService widgetService;
 
-
+    // Initial get mapping to access the view 
     @GetMapping(value = {"finalproject"})
     public String getWidget(Model model) throws Exception {        
         return "widget";
     }
     
+    // Sets the initial date for the table
+    // Could easily set default to today's date 
+    //      but 12/16/2018 is used for simplicity and consistency 
     @ResponseBody
     @GetMapping(value = "finalproject/getGames")
     public List<Widget> getParentGames(){
-        
-        System.out.println("tried table");
         scheduledTask.setInitialDate();
-         
-        List<Widget> gameParentList = widgetService.getAllParentGames();
-        
         List<Widget> widgetList = widgetService.getGameByDate("2018-12-16 0:00:00.000");
         return widgetList;
-        
-        //return gameParentList;
     }
     
+    // Sets the date desired by the user and returns the information
+    //  for the given date 
     @ResponseBody
     @PostMapping(value = "finalproject/postDate")
     public List<Widget> postDate(Model model, Date date) {
-        
-        System.out.println(date.getDateOne() + " " + date.getDateTwo());
         scheduledTask.setUserDate(date.getDateOne());
-        
-        //TimeUnit.SECONDS.sleep(2);
-        //scheduledTask.setUserDate2(date.getMonth(), date.getYear(), date.getDay());
         
         String newDate = date.getDateTwo() + " 0:00:00.000";
         List<Widget> widgetList = widgetService.getGameByDate(newDate);
@@ -146,6 +147,21 @@ public class WidgetController extends BaseController {
                 return new JSONObject().put("error", true).put("errorMessage", jpe.getMessage()).toString();
             }
         }
+    }
+    
+    @ResponseBody
+    @GetMapping(value = { "finalproject/getSmsSent" })
+    public List<BigInteger> getSmsSent(Model model) throws Exception {
+        String yes = "Y";
+        BigInteger id;
+        List<BigInteger> idList = new ArrayList<>();
+        List<Widget> sentList = widgetService.findBySmsSent(yes);
+        for (Widget widget : sentList) {
+            id = widget.getEventID();
+            idList.add(id);
+        }
+        
+        return idList;
     }
     
 /*    @GetMapping(value = {"finalproject/api"})
