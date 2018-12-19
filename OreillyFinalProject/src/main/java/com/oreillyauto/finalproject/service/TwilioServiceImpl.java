@@ -1,3 +1,5 @@
+// Used to send text messages 
+
 package com.oreillyauto.finalproject.service;
 
 import java.io.IOException;
@@ -59,13 +61,14 @@ public class TwilioServiceImpl {
             HttpEntity<MultiValueMap<String, String>> entity = new HttpEntity<>(params, headers);
             RestTemplate restTemplate = new RestTemplate();
             ResponseEntity<String> response = restTemplate.postForEntity(url, entity, String.class);
-            System.out.println(response);
             return "success";
         }else {
             
+            // Checking if landline
             LookupsClient client = new LookupsClient(ACCOUNT_SID, AUTH_TOKEN);
             PhoneNumber phoneNumber = client.getPhoneNumber(number, true);
             
+            // Testing for landline
             try {
                 if(LANDLINE.equalsIgnoreCase(phoneNumber.getType().toString())) {
                     System.out.println("landline");

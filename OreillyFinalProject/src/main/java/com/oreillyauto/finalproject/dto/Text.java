@@ -1,3 +1,8 @@
+// Class:       Text
+// Purpose:     Used as a data transfer object that "transfers" the text information to 
+//                  to the controller
+
+
 package com.oreillyauto.finalproject.dto;
 
 public class Text {

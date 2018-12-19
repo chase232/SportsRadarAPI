@@ -1,3 +1,8 @@
+// Class:       Schedule
+// Purpose:     Serves as top layer class for api connection
+//                  Everything from restful web service will go through this class
+//                  and then be directed to the lower classes to get specific information 
+
 package com.oreillyauto.finalproject.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

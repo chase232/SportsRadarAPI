@@ -1,3 +1,6 @@
+// Class:       WidgetRepositoryImpl
+// Purpose:     Implements QueryDsl calls and database work
+
 package com.oreillyauto.finalproject.dao.impl;
 
 import java.math.BigInteger;
@@ -16,24 +19,6 @@ public class WidgetRepositoryImpl extends QuerydslRepositorySupport implements W
     public WidgetRepositoryImpl() {
         super(Widget.class);
     }
-
-/*    @Override
-    public Widget getGameById(int i) {
-        
-        QWidget widget = QWidget.widget;
-        BigInteger bigInt = BigInteger.valueOf(i);
-        
-        try {
-            Widget w = (Widget) getQuerydsl().createQuery()
-                    .from(widget)
-                    .where(widget.eventID.eq(bigInt))
-                    .fetchFirst();
-            return w;
-        }
-        catch (EmptyResultDataAccessException e) {
-            return null;
-        }
-    }*/
 
 }
 

@@ -1,3 +1,6 @@
+// Class:       WidgetProperty
+// Purpose:     Serves as a connector to the database table event_properties
+
 package com.oreillyauto.finalproject.domain;
 
 import java.io.Serializable;
@@ -33,7 +36,6 @@ public class WidgetProperty implements Serializable {
     
     @JsonIgnore
     @ManyToOne
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
     @JoinColumn(name = "event_id", referencedColumnName = "event_id", columnDefinition="BIGINT")
     private Widget widget;
     

@@ -1,3 +1,8 @@
+// Class:       WidgetServiceImpl
+// Purpose:     The business logic of the project is here
+//                  performs business functions and does a majority of the 
+//                  logic 
+
 package com.oreillyauto.finalproject.service;
 
 import java.io.IOException;
@@ -38,19 +43,7 @@ public class WidgetServiceImpl implements WidgetService {
         
         String phoneNumber = text.getPhoneNumber();
         String textInformation = text.getTextInformation();
-        
-//        TwilioUtil t = null;
-//        try {
-//            t = new TwilioUtil();
-//            String message = t.sendSms(phoneNumber, textInformation);
-//            return message;
-//        }
-//        catch (IOException e) {
-//            System.out.println("Error sending text");
-//            e.printStackTrace();
-//            return "fail";
-//        }  
-        
+      
         TwilioServiceImpl t = null;
         try {
             t = new TwilioServiceImpl();
@@ -89,5 +82,17 @@ public class WidgetServiceImpl implements WidgetService {
         return w;
     }
 
-
+    @Override
+    public String checkTextSize(String textInformation, String phoneNumber, String body) {
+        
+        if(phoneNumber != null && textInformation != null) {
+            if (body.length() > 160) {
+                return textInformation.substring(0, 122);
+            } else {
+                return textInformation;
+            }
+        } else {
+            return null;
+        }
+    }
 }

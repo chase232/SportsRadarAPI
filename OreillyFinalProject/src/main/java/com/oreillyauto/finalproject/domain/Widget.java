@@ -1,3 +1,7 @@
+// Class:       Widget
+// Purpose:     Serves as a connector to the database table events
+//                  also contains methods used to populate table in view
+
 package com.oreillyauto.finalproject.domain;
 
 import java.io.Serializable;

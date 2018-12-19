@@ -1,3 +1,7 @@
+// Class:       Date
+// Purpose:     Used as a data transfer object that "transfers" the date to 
+//                  to the controller
+
 package com.oreillyauto.finalproject.dto;
 
 public class Date {

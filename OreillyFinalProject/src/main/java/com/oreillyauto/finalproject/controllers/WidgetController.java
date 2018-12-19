@@ -52,8 +52,10 @@ public class WidgetController extends BaseController {
     @ResponseBody
     @GetMapping(value = "finalproject/getGames")
     public List<Widget> getParentGames(){
+        
         scheduledTask.setInitialDate();
         List<Widget> widgetList = widgetService.getGameByDate("2018-12-16 0:00:00.000");
+        
         return widgetList;
     }
     
@@ -62,43 +64,31 @@ public class WidgetController extends BaseController {
     @ResponseBody
     @PostMapping(value = "finalproject/postDate")
     public List<Widget> postDate(Model model, Date date) {
-        scheduledTask.setUserDate(date.getDateOne());
         
-        String newDate = date.getDateTwo() + " 0:00:00.000";
+        scheduledTask.setUserDate(date.getDateOne());       
+        String newDate = date.getDateTwo() + " 0:00:00.000";  
         List<Widget> widgetList = widgetService.getGameByDate(newDate);
-        System.out.println("Made it past list");
-        
-        for (Widget widget : widgetList) {
-            System.out.println("1. " + widget.getDateTime() + widget.getGame());
-        }
+
         return widgetList;
     }
     
-/*    @ResponseBody
-    @PostMapping(value = "finalproject/getGamesByDate")
-    public List<Widget>  getDate(Model model, Date date){
-        //System.out.println(date.getDate());
-        String newDate = date.getDate() + " 0:00:00.000";
-        List<Widget> widgetList = widgetService.getGameByDate(newDate);
-        System.out.println("Made it past list");
-        for (Widget widget : widgetList) {
-            System.out.println("1. " + widget.getDateTime() + widget.getGame());
-        }
-        return widgetList;
-    }*/
-    
+    // Directs the flow of the text message being sent and returns
+    //  success, failure, or landline
     @ResponseBody
     @PostMapping(value = { "finalproject/text" })
     public String postSendText(Model model, Text text) throws Exception {
         
-        System.out.println("Number: " + text.getPhoneNumber() + " Text: " + text.getTextInformation());
         String body = text.getTextInformation();
-        
-        if(text.getPhoneNumber() != null && text.getTextInformation() != null) {
+        String textSize = widgetService.checkTextSize(text.getTextInformation(), text.getPhoneNumber(), body);
+        if(textSize != null) {
+            text.setTextInformation(textSize);
+        }
+/*        if(text.getPhoneNumber() != null && text.getTextInformation() != null) {
             if (body.length() > 160) {
                 text.setTextInformation(text.getTextInformation().substring(0, 122));
             }
-        }
+        }*/
+        
         try {
             String test = "";
             text.setError(false);
@@ -113,7 +103,6 @@ public class WidgetController extends BaseController {
                     Widget w = widgetService.findByEventID(i);
                     w.setSmsSent("Y");
                     widgetService.saveGame(w);
-                    System.out.println("Saved");
                 }
                 return new ObjectMapper().writeValueAsString(text);
             }else {
@@ -149,6 +138,8 @@ public class WidgetController extends BaseController {
         }
     }
     
+    // Whenever a text message is sent successfully 
+    //   this will save it to the database
     @ResponseBody
     @GetMapping(value = { "finalproject/getSmsSent" })
     public List<BigInteger> getSmsSent(Model model) throws Exception {
@@ -163,26 +154,6 @@ public class WidgetController extends BaseController {
         
         return idList;
     }
-    
-/*    @GetMapping(value = {"finalproject/api"})
-    public String getAPI(Model model) throws JsonProcessingException {
-        String service = "Sports Radar";
-        String serviceUri = "http://api.sportradar.us/ncaamb/trial/v4/en/games/2018/12/13/schedule.json?api_key=n53y89q2b7xysgej6ywu9h4m";
-        RestTemplate restTemplate = new RestTemplate();
-        
-        Schedule schedule = restTemplate.getForObject(serviceUri, Schedule.class);
-        
-        ObjectMapper mapper = new ObjectMapper();
-        
-        String response = mapper.writerWithDefaultPrettyPrinter().writeValueAsString(schedule);
-        model.addAttribute("service", service);
-        model.addAttribute("request", serviceUri);
-        model.addAttribute("response", response);
-        
-        return "widget";
-    }
-    
-    */
 }
 
 

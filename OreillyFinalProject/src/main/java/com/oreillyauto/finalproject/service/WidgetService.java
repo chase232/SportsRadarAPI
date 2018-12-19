@@ -1,3 +1,6 @@
+// Interface:   WidegetService
+// Purpose:     Interface for the class WidgetServiceImpl
+
 package com.oreillyauto.finalproject.service;
 
 import java.util.List;
@@ -21,5 +24,7 @@ public interface WidgetService {
     Widget findByEventID(int i);
 
     List<Widget> findBySmsSent(String yes);
+
+    String checkTextSize(String textInformation, String phoneNumber, String body);
 
 }

@@ -129,6 +129,10 @@ This .jsp file holds majority of UI and contains the bulk of the js
 	</div>
 </body>
 <script>
+/*
+ * Javascript and Dojo methods
+ 	This could use some cleaning and modular work but I was short on time..
+ */
 	var sentArray = [];
 	var loadedArray = [];
 	require(
@@ -194,7 +198,6 @@ This .jsp file holds majority of UI and contains the bulk of the js
 						buttonText.stopSpinner();
 						let btn = this;
 						let checkedArray = grid.getChecked();
-						//let output = dom.byId("output");
 						var textInformation = "";
 						var ids = "";
 	
@@ -203,8 +206,6 @@ This .jsp file holds majority of UI and contains the bulk of the js
 							idArray.push(checkedArray[i].eventID);
 							textInformation += "Event ID: " + checkedArray[i].eventID + "\n Game: " + checkedArray[i].game + "\n ";
 						}
-						//grid.refresh();
-						//output.innerHTML = textInformation;
 						// Load the Table after the DOM is ready
 						request('<c:url value="/finalproject/text" />', {
 							method : 'POST',
@@ -220,7 +221,6 @@ This .jsp file holds majority of UI and contains the bulk of the js
 							alertManagerWarning.hide();
 							alertManagerSuccess.clear();
 							var msg;
-							console.log(data);
 							let json = JSON.parse(data);
 							btn.stopSpinner();							
 							if (json.error == false) {
@@ -253,8 +253,9 @@ This .jsp file holds majority of UI and contains the bulk of the js
 						//grid.refresh();	        	
 						buttonDate.stopSpinner();
 						let btn = this;
+						
+						// Used to find date
 						var date = document.getElementById("gameDate").value;
-						console.log(date);
 						date = new Date(date);
 						var dd = date.getDate() + 1;
 						var mm = date.getMonth() + 1;
@@ -334,7 +335,7 @@ This .jsp file holds majority of UI and contains the bulk of the js
 							month = "8";
 							year = "2018";
 						}
-						console.log(date);
+
 						// Load the Table after the DOM is ready
 						request('<c:url value="/finalproject/postDate" />', {
 							method : 'POST',
@@ -393,7 +394,6 @@ This .jsp file holds majority of UI and contains the bulk of the js
 							cb.setAttribute("aria-checked", false);
 							cb.setChecked(false);
 							cb.setDisabled(true);
-							console.log("Got here");
 						}
 						
 					} 
