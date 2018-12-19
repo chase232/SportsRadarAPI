@@ -95,8 +95,43 @@
 }
 
 body {
-	background-image: url("https://wallpapercave.com/wp/fiX2Wk3.jpg");
-}
+		padding-top: 20px;
+		/*background-image: url("https://wallpapercave.com/wp/fiX2Wk3.jpg");*/ 
+		background-image: url("images/background.jpg");
+		background-repeat:   no-repeat;
+   		background-position: center center;   
+   		background-color: black; 
+	} 
+	.container {
+		/*background-color: #cccccc;*/
+		background-color: #FCDDA6;
+	}
+	.header {
+		margin-bottom: -45px;
+		margin-top: -45px;
+	}
+	#description {
+		font-size: 16px;
+	}
+	label, button, input {
+		font-size: 16px;
+	}
+		
+	#phoneNumber, #gameDate {
+		font-size:  16px;
+	}
+	.col1 {
+		width: 120px;
+	}
+	.col2 {
+		width: 120px;
+	}
+	.col3 {
+		width: 180px;
+	}
+	.col4 {
+		width: 210px;
+	}
 
 
 

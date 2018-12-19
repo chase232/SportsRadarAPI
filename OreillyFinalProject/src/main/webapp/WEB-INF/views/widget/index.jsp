@@ -1,45 +1,4 @@
 <%@ include file="/WEB-INF/layouts/include.jsp"%>
-<style>
-	body {
-		padding-top: 20px;
-		background-image: url("https://wallpapercave.com/wp/fiX2Wk3.jpg"); 
-		/*background-image: url("/images/background.jpg");*/
-		background-repeat:   no-repeat;
-   		background-position: center center;   
-   		background-color: black; 
-	} 
-	.container {
-		/*background-color: #cccccc;*/
-		background-color: #FCDDA6;
-	}
-	.header {
-		margin-bottom: -45px;
-		margin-top: -45px;
-	}
-	#description {
-		font-size: 16px;
-	}
-	label, button, input {
-		font-size: 16px;
-	}
-		
-	#phoneNumber, #gameDate {
-		font-size:  16px;
-	}
-	.col1 {
-		width: 120px;
-	}
-	.col2 {
-		width: 120px;
-	}
-	.col3 {
-		width: 180px;
-	}
-	.col4 {
-		width: 210px;
-	}
-	
-</style>
 <body>
 	<div class="container">
 		<div class="row">
@@ -72,7 +31,22 @@
 				</div>
 			</div>
 		</div>
-		<div id="message"></div>
+		<div class="row">
+			<div class="col-sm-12">
+				<div id="messageSuccess" data-dojo-id="messageSuccess" 
+    				data-dojo-type="oreilly/types/ui/AlertManager"
+    				data-dojo-props="scroll:true"></div>
+    			<div id="messageFail" data-dojo-id="messageFail" 
+    				data-dojo-type="oreilly/types/ui/AlertManager"
+    				data-dojo-props="scroll:true"></div>
+    			<div id="messageWarning" data-dojo-id="messageWarning" 
+    				data-dojo-type="oreilly/types/ui/AlertManager"
+    				data-dojo-props="scroll:true"></div>
+			</div>			
+		</div>
+		<div id="message" data-dojo-id="message" 
+    			data-dojo-type="oreilly/types/ui/AlertManager"
+    			data-dojo-props="scroll:true"></div>
 		<div class="row">
 			<div class="col-sm-5">
 				<div class="row">
@@ -90,7 +64,7 @@
 					<div class="col-sm-2">
 						<button class="btn btn-primary" data-dojo-id="formSubmit"
 							data-dojo-type="oreilly/types/form/Button"
-							data-dojo-props="spinOnClick: true" id="checkedButton"
+							data-dojo-props="spinOnClick: false" id="checkedButton"
 							type="submit">Send</button>
 					</div>
 				</div>
@@ -113,7 +87,7 @@
 					<div class="col-sm-2">
 						<button class="btn btn-primary" data-dojo-id="setDate"
 							data-dojo-type="oreilly/types/form/Button"
-							data-dojo-props="spinOnClick: true" id="setDate" type="submit">
+							data-dojo-props="spinOnClick: false" id="setDate" type="submit">
 							Set Date</button>
 					</div>
 				</div>
@@ -128,13 +102,11 @@
 					<div id="objectMapperGrid" class="span12">
 						<table id="sport" class="table table-striped table-bordered"
 							data-dojo-type="oreilly/types/dgrid/PagingGridCheckBox"
-							data-dojo-props="store: widgetSport, loadDataOnStartup: true, minRowsPerPage: 16">
+							data-dojo-props="store: widgetSport, loadDataOnStartup: true">
 							<thead>
 								<tr>
 									<th class="hyperlink col1"
 										data-dgrid-column='{field:"eventID", name:"eventID"}'>Event ID</th>
-									<th class="hyperlink col2"
-										data-dgrid-column='{field:"smsSent", name:"smsSent"}'>Sms Sent</th>
 									<th class="hyperlink col2"
 										data-dgrid-column='{field:"eventType", name:"eventType"}'>League</th>
 									<th class="hyperlink col3"
@@ -152,23 +124,26 @@
 	</div>
 </body>
 <script>
+	var sentArray = [];
 	require(
 			[ 'dojo/request', 'dijit/registry', 'dojo/ready', 'dojo/dom',
 					'dojo/dom-construct' ],
 			function(request, registry, ready, dom, domConstruct) {
 				ready(function() {
-					var grid = registry.byId("sport");
-					var store = registry.byId("widgetSport");
-					var buttonText = registry.byId("checkedButton");
-					var buttonDate = registry.byId("setDate");
-					var alertManager = registry.byId('alertManager');
-					var sentArray = [];
+					var grid = registry.byId('sport');
+					var store = registry.byId('widgetSport');
+					var buttonText = registry.byId('checkedButton');
+					var buttonDate = registry.byId('setDate');
+					var alertManagerSuccess = registry.byId('messageSuccess');
+					var alertManagerFail = registry.byId('messageFail');
+					var alertManagerWarning = registry.byId('messageWarning');
+					//var sentArray = [];
 					var idArray = [];
 					var header = registry.byId('oap-checkboxheader-sport');
-
+					var numberTab = registry.byId('paginationNodesport');
+					//var pag = registry.byId('paginationParent');
 					request('<c:url value="/finalproject/getGames"/>').then(
 							function(data) {
-								console.log(data);
 								grid.store.setData(JSON.parse(data));
 								grid.refresh();
 							}, function(err) {
@@ -186,7 +161,7 @@
 						var ids = "";
 	
 						for (var i = 0; i < checkedArray.length; i++) {
-							ids += checkedArray[i].eventID + ", ";
+							ids += checkedArray[i].eventID + "  ";
 							idArray.push(checkedArray[i].eventID);
 							textInformation += "Event ID: " + checkedArray[i].eventID + "\n Game: " + checkedArray[i].game + "\n ";
 						}
@@ -202,15 +177,18 @@
 								'ids' : idArray
 							}
 						}).then(function(data) {
-							alertManager.hide();
+							alertManagerSuccess.hide();
+							alertManagerFail.hide();
+							alertManagerWarning.hide();
+							alertManagerSuccess.clear();
 							var msg;
 							console.log(data);
 							let json = JSON.parse(data);
 							btn.stopSpinner();							
 							if (json.error == false) {
 								msg = "Text Sent Successfully to " + phoneNumber + " with Ids " + ids;
-								alertManager.addSuccess({message : msg, position : 'message', hide : false});
-								alertManager.addError({hide : true});
+								alertManagerSuccess.addSuccess({message : msg, position : 'messageSuccess', hide : false, duration : 10000});
+								alertManagerFail.addError({hide : true});
 								for (var i = 0; i < checkedArray.length; i++) {
 									cb = registry.byId("oap-checkbox-" + checkedArray[i].eventID + "sport");
 									cb.setAttribute("aria-checked", false);
@@ -221,14 +199,9 @@
 								}
 							} else {
 								msg = (json.errorMessage == '' || json.errorMessage == "undefined") ? 'Unknown Exception' : json.errorMessage;
-								alertManager.addError({message : msg, position : 'message', hide : false});
-								alertManager.addSuccess({hide : true});
-								for (let i = 0; i < sentArray.length; i++) {
-									let cb = registry.byId(sentArray[i]);
-									cb.setAttribute("aria-checked", false);
-									cb.setChecked(false);
-									cb.setDisabled(true);
-								}
+								alertManagerFail.addError({message : msg, position : 'messageFail', hide : false});
+								alertManagerSuccess.addSuccess({hide : true});
+								checkBoxes();
 							}
 						}, function(err) {
 							console.log("Error: " + err);
@@ -332,29 +305,50 @@
 							//grid.store.setData(JSON.parse(data));
 							grid.store.setData(data);
 							grid.refresh();
-							var msg;
 							//console.log(data);
 							//let json = JSON.parse(data);
-							btn.stopSpinner();
-							for (let i = 0; i < sentArray.length; i++) {
-								let cb = registry.byId(sentArray[i]);
-								cb.setAttribute("aria-checked", false);
-								cb.setChecked(false);
-								cb.setDisabled(true);
+							alertManagerSuccess.hide();
+							alertManagerFail.hide();
+							alertManagerWarning.hide();
+							alertManagerSuccess.clear();
+							alertManagerWarning.clear();
+							var msg;
+							if(data.length == 0){
+								msg = "No games on the date " + newDate;
+								alertManagerWarning.addWarning({message: msg, position : 'messageWarning', hide : false, duration : 5000});
+							} else {
+								msg = "API loaded games for " + newDate;
+								alertManagerSuccess.addSuccess({message : msg, position : 'messageSuccess', hide : false, duration : 10000});
+								alertManagerFail.addError({hide : true});
 							}
+							btn.stopSpinner();
+							checkBoxes();
 						});
 					});
 					header.on('click', function() {
-						for (let i = 0; i < sentArray.length; i++) {
-							let cb = registry.byId(sentArray[i]);
-							cb.setAttribute("aria-checked", false);
-							cb.setChecked(false);
-							cb.setDisabled(true);
-						}
+						checkBoxes();
+					});
+					grid.on('click', function() {
+						checkBoxes();
+					});
+					numberTab.on('click', function() {
+						checkBoxes();
 					});
 				});
+				function checkBoxes(){
+					for (let i = 0; i < sentArray.length; i++) {
+						let cb = registry.byId(sentArray[i]);
+						cb.setAttribute("aria-checked", false);
+						cb.setChecked(false);
+						cb.setDisabled(true);
+					}
+				}
 			});
 </script>
+
+
+
+
 
 
 

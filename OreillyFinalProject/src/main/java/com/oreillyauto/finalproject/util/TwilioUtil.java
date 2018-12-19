@@ -15,7 +15,6 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
 import com.oreillyauto.finalproject.service.WidgetServiceImpl;
-import com.twilio.Twilio;
 
 public class TwilioUtil {
     private static final String LANDLINE = "landline";

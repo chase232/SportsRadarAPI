@@ -14,12 +14,14 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
-import com.oreillyauto.finalproject.service.WidgetServiceImpl;
-import com.twilio.Twilio;
+import com.twilio.sdk.LookupsClient;
+import com.twilio.sdk.TwilioRestException;
+import com.twilio.sdk.resource.instance.lookups.PhoneNumber;
 
 public class TwilioServiceImpl {
     private static final String LANDLINE = "landline";
     private static final String CHASE_CELL = "+15736945653";
+    private static final String NICHOLAS_CELL = "+14175974289";
     private static final String TWILIO_CELL = "+15733045982";
     private String ACCOUNT_SID = null;
     private String AUTH_TOKEN = null;
@@ -33,9 +35,8 @@ public class TwilioServiceImpl {
     
     public String sendSms(String number, String body) {
         
-        System.out.println("Got here");
         // If the cell is a known/good cell number, send the message
-        if (number.equals(CHASE_CELL)) {
+        if (number.equals(CHASE_CELL) || number.equals(NICHOLAS_CELL)) {
             String url = "https://api.twilio.com/2010-04-01/Accounts/" + ACCOUNT_SID + "/Messages.json";
             
             // Setup authentication and encode it
@@ -60,9 +61,18 @@ public class TwilioServiceImpl {
             ResponseEntity<String> response = restTemplate.postForEntity(url, entity, String.class);
             System.out.println(response);
             return "success";
-        } else {
-            System.out.println("failed");
-            return "fail";
+        }else {
+            
+            LookupsClient client = new LookupsClient(ACCOUNT_SID, AUTH_TOKEN);
+            PhoneNumber phoneNumber = client.getPhoneNumber(number, true);
+            
+            if(LANDLINE.equalsIgnoreCase(phoneNumber.getType().toString())) {
+                System.out.println("landline");
+                return "landline";
+            } else {
+                System.out.println("failed");
+                return "fail";   
+            }
         }
     }
 }

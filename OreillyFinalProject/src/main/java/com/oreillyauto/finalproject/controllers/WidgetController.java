@@ -117,7 +117,11 @@ public class WidgetController extends BaseController {
                 return new ObjectMapper().writeValueAsString(text);
             }else {
                 text.setError(true);
-                text.setErrorMessage("Phone number needs to be a mobile number and valid\n (+15736945653)");
+                if (test.equals("landline")) {
+                    text.setErrorMessage("Phone number cannot be a landline number");
+                } else {
+                    text.setErrorMessage("Phone number needs to be a mobile number (no landline) and valid\n (+15736945653)");
+                }              
                 return new ObjectMapper().writeValueAsString(text);
             }
         }
