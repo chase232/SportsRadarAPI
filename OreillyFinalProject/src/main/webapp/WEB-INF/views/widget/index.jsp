@@ -185,10 +185,10 @@ This .jsp file holds majority of UI and contains the bulk of the js
 											checkBoxes(); 
 											
 										}, function(err) {
-											console.log("Error: " + err);
+											//console.log("Error: " + err);
 										});		
 							}, function(err) {
-								console.log("Error: " + err);
+								//console.log("Error: " + err);
 							});
 					grid.refresh();
 					
@@ -225,7 +225,7 @@ This .jsp file holds majority of UI and contains the bulk of the js
 							btn.stopSpinner();							
 							if (json.error == false) {
 								msg = "Text Sent Successfully to " + phoneNumber + " with Ids " + ids;
-								alertManagerSuccess.addSuccess({message : msg, position : 'messageSuccess', hide : false, duration : 10000});
+								alertManagerSuccess.addSuccess({message : msg.bold(), position : 'messageSuccess', hide : false, duration : 10000});
 								alertManagerFail.addError({hide : true});
 								for (var i = 0; i < checkedArray.length; i++) {
 									cb = registry.byId("oap-checkbox-" + checkedArray[i].eventID + "sport");
@@ -237,15 +237,15 @@ This .jsp file holds majority of UI and contains the bulk of the js
 								}
 							} else {
 								msg = (json.errorMessage == '' || json.errorMessage == "undefined") ? 'Unknown Exception' : json.errorMessage;
-								alertManagerFail.addError({message : msg, position : 'messageFail', hide : false});
+								alertManagerFail.addError({message : msg.bold(), position : 'messageFail', hide : false});
 								alertManagerSuccess.addSuccess({hide : true});
 								checkBoxes();
 							}
 						}, function(err) {
-							console.log("Error: " + err);
+							//console.log("Error: " + err);
 						}, function(err) {
 							buttonText.stopSpinner();
-							console.log("Error: "+ err);
+							//console.log("Error: "+ err);
 						});
 					});
 
@@ -364,10 +364,10 @@ This .jsp file holds majority of UI and contains the bulk of the js
 							//}
 							if(data.length == 0){
 								msg = "No games on the date " + newDate;
-								alertManagerWarning.addWarning({message: msg, position : 'messageWarning', hide : false, duration : 5000});
+								alertManagerWarning.addWarning({message: msg.bold(), position : 'messageWarning', hide : false, duration : 5000});
 							} else {							
 								msg = "API loaded games for " + newDate;
-								alertManagerSuccess.addSuccess({message : msg, position : 'messageSuccess', hide : false, duration : 10000});
+								alertManagerSuccess.addSuccess({message : msg.bold(), position : 'messageSuccess', hide : false, duration : 10000});
 								alertManagerFail.addError({hide : true});
 							}
 							btn.stopSpinner();
@@ -381,7 +381,7 @@ This .jsp file holds majority of UI and contains the bulk of the js
 					grid.on('click', function() {
 						checkBoxes();
 					});
-					/* pag.on('click', function() {
+/* 				    pag.on('click', function() { 
 						checkBoxes();
 					}); */
 				});

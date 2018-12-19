@@ -52,7 +52,6 @@ public class WidgetServiceImpl implements WidgetService {
             return message;
         }
         catch (IOException e) {
-            System.out.println("Error sending text");
             e.printStackTrace();
             return "fail";
         }     

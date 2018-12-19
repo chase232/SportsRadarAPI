@@ -83,6 +83,8 @@ public class WidgetController extends BaseController {
         if(textSize != null) {
             text.setTextInformation(textSize);
         }
+        
+        // Moved to service. Kept just in case it doesn't work
 /*        if(text.getPhoneNumber() != null && text.getTextInformation() != null) {
             if (body.length() > 160) {
                 text.setTextInformation(text.getTextInformation().substring(0, 122));
@@ -95,9 +97,7 @@ public class WidgetController extends BaseController {
             text.setErrorMessage("");
             test = widgetService.sendText(text);
             if(test.equals("success")) {
-                System.out.println("text size: " + text.getTextInformation().length());
-                text.setError(false);
-                
+               text.setError(false);                
                int sentArray[] = text.getIds();
                for (int i : sentArray) {
                     Widget w = widgetService.findByEventID(i);

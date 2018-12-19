@@ -71,14 +71,11 @@ public class TwilioServiceImpl {
             // Testing for landline
             try {
                 if(LANDLINE.equalsIgnoreCase(phoneNumber.getType().toString())) {
-                    System.out.println("landline");
                     return "landline";
                 } else {
-                    System.out.println("failed");
                     return "fail";
                 }
             } catch(Exception e) {
-                System.out.println("failed");
                 return "fail";
             }
         }
