@@ -1,5 +1,5 @@
-# OreillyFinalProject
+# Sports Radar API
 
 Spring MVC appliaction used to retrieve data from the Sportradar API.
 
-The data being displayed is games from the NBA season 
+The data being displayed is games from the NBA season.
